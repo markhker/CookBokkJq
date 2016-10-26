@@ -1,0 +1,95 @@
+// _base.scss
+@import 'vars';
+
+html {
+  box-sizing: border-box;
+  font-family: $font-stack;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-size: 1rem;
+  font-weight: 300;
+  color: $blue-1;
+  margin: 0;
+  padding: 0;
+  background-color: $w;
+}
+
+@media screen and (min-width: 20rem) {
+  html {
+    font-size: calc(1rem + 0.7 * ((100vw - 20rem) / 30));
+  }
+}
+@media screen and (min-width: 50rem) {
+  html {
+    font-size: 1.3rem;
+  }
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+a {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+p {
+  line-height: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 2rem;
+  margin-top: calc((1.5rem - 2rem) + 1.5rem);
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-top: calc((1.5rem - 1.5rem) + 1.5rem*2);
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.25rem;
+  margin-top: calc((1.5rem - 1.25rem) + 1.5rem*2);
+  font-weight: 300;
+}
+
+h4 {
+  font-size: 1rem;
+  line-height: 1rem;
+  margin-top: calc((1.5rem - 1rem) + 1.5rem*2);
+  font-weight: 300;
+}
+
+h5 {
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+  margin-top: calc((1.5rem - 0.875rem) + 1.5rem*2);
+  font-weight: 300;
+}
+
+::-moz-selection {
+  background: $blue-4;
+  text-shadow: none;
+  color: $w;
+}
+
+::selection {
+  background: $blue-4;
+  text-shadow: none;
+  color: $w;
+}

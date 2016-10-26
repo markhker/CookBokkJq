@@ -1,0 +1,960 @@
+/* main.scss */
+/* ==========================================================================
+   Mark Hkr styles v1.5.0
+    Pure css, custom 24 cols
+    jQuery v3.1.1
+    FontAwesome v4.6.3
+    HTML5 Media v1.1.8
+    Package.json v1.1.2
+
+//Run: npm i -D
+//Run eslint --init
+//Run: npm run postinstall
+
+    @markhker
+   ========================================================================== */
+
+/* import files */
+
+@import 'fonts';
+@import 'vars';
+@import 'base';
+@import 'responsive';
+
+
+/******************************
+    GLOBAL
+******************************/
+
+.container-fluid {
+  margin: 0 auto;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  max-width: 1600px;
+}
+
+.container-form {
+  margin: 0 auto;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  width: 90%;
+}
+
+.mainFooter {
+  margin: 0 auto;
+  padding: 0 0 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  div {
+    justify-content: center;
+  }
+}
+
+hr.styled {
+  margin-top: 2rem;
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba($grey, 0.75), rgba(0, 0, 0, 0));
+}
+
+.btn {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    width: 96%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    border-top: 1px dashed $w;
+    content: "";
+    transform: translateY(20px);
+  }
+
+  &:before {
+    position: absolute;
+    width: 96%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    top: 50%;
+    height: 2px;
+    margin-top: -1px;
+    border-top: 1px dashed $w;
+    content: "";
+    transform: translateY(-20px);
+  }
+}
+
+/*************************************************************
+    GLOBAL ENDS
+*************************************************************/
+
+
+/******************************
+    HOME
+******************************/
+
+.logos {
+  margin-top: 1.5rem;
+  a {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+
+    &:hover {
+      img {
+        filter: none;
+      }
+    }
+
+    img {
+      filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.26));
+    }
+  }
+}
+
+.hero {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  align-items: center;
+  background-image: url('https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/home/redBand.png');
+  background-size: 100% 10%;
+  background-repeat: repeat-x;
+  background-position: center;
+  padding: 0;
+}
+
+.cats {
+  background-image: url('https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/home/back.png');
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 3rem 0 4rem;
+}
+
+/***************************************************************
+    HOME ENDS
+***************************************************************/
+
+/******************************
+    LOGIN
+******************************/
+
+.loginHeader {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: inline-block;
+  margin-bottom: 5px;
+  max-width: 100%;
+  color: $blue-3;
+}
+
+.miniTerms {
+  color: $grey;
+  font-size: .8rem;
+  line-height: .8rem;
+}
+
+.chkBx {
+  position: relative;
+  top: -.375rem;
+  margin: 0 1rem 0 0;
+  cursor: pointer;
+
+  &:before {
+    transition: all 0.3s ease-in-out;
+    content: "";
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -.125rem;
+    left: 0;
+    width: 1.1rem;
+    height: 1.1rem;
+    background: $w;
+    cursor: pointer;
+  }
+
+  &:checked:before {
+    transform: rotate(-45deg);
+    height: .5rem;
+    border-color: $green;
+    border-top-style: none;
+    border-right-style: none;
+    box-shadow: none;
+  }
+}
+
+.chkBxLabel {
+  color: $grey;
+  font-size: .8rem;
+  line-height: .8rem;
+}
+
+.input {
+  display: block;
+  box-sizing: border-box;
+  padding: 10px 16px;
+  width: 100%;
+  height: 46px;
+  outline: 0;
+  border: 1px solid $green;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  color: #616161;
+  font-size: 18px;
+  line-height: 1.3333333;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+
+.input:focus {
+  border-color: #0074c2;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(0, 116, 194, 0.6);
+}
+
+.button {
+  display: block;
+  box-sizing: border-box;
+  margin: 2rem 0;
+  padding: 10px 16px;
+  width: 100%;
+  outline: 0;
+  border: 1px solid $magenta;
+  border-radius: 5px;
+  background: $magenta;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.3333333;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: rgba(134,200,45, 0.8);
+  border: 1px solid $green;
+}
+
+.button:focus {
+  border-color: #0074c2;
+  box-shadow: 0 0 8px rgba(134,200,45, 0.6);
+}
+
+/*************************************************************
+    LOGIN ENDS
+*************************************************************/
+
+/******************************
+    UPLOAD
+******************************/
+
+/*** MAIN DISH IMAGE ***/
+.image-editor {
+  .cropit-preview {
+    background-color: #f7f7f7;
+    background-size: cover;
+    border: 2px solid #dcdcdc;
+    border-radius: .5rem;
+    margin-top: 7px;
+    width: 100%;
+    height: 30rem;
+  }
+
+  .select-image-btn {
+    position: absolute;
+    z-index: 5;
+    cursor: pointer;
+    font-size: 4rem;
+    line-height: 2rem;
+    padding: .5rem;
+    right: 0;
+    color: $b-3;
+    opacity: .6;
+    transition: opacity 600ms ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .rotate-ccw, .rotate-cw {
+    cursor: pointer;
+  }
+
+  .slider-wrap {
+    display: inline-block;
+    .pict-sm {
+      font-size: .8rem;
+    }
+
+    .pict-lg {
+      font-size: 1.2rem;
+    }
+  }
+
+  .cropit-preview-image-container {
+    cursor: move;
+  }
+
+  .cropit-preview-background {
+    opacity: .2;
+    cursor: auto;
+  }
+
+  .image-size-label {
+    margin-top: 10px;
+  }
+
+  input.cropit-image-input {
+    visibility: hidden;
+  }
+
+  .cropit-preview.cropit-image-loading .spinner {
+    opacity: 1;
+  }
+
+  .cropit-preview.cropit-image-loaded .cropit-preview-image-container {
+    cursor: move;
+  }
+
+  .cropit-image-zoom-input[disabled] {
+    opacity: .2;
+  }
+}
+
+input.cropit-image-zoom-input {
+  position: relative;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 5px;
+  background: #eee;
+  border-radius: 5px;
+  outline: none;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: .7rem;
+    height: .7rem;
+    background: $grey;
+    border-radius: 50%;
+    transition: background 0.25s;
+  }
+}
+
+/*** END MAIN DISH IMAGE ***/
+
+/*** USER IMAGE ***/
+.rightDropper {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.image-user {
+  .cropit-preview {
+    background-color: #f7f7f7;
+    background-size: cover;
+    border: 2px solid #dcdcdc;
+    border-radius: .5rem;
+    margin-top: 7px;
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .select-image-btn {
+    position: absolute;
+    z-index: 5;
+    cursor: pointer;
+    font-size: 4rem;
+    line-height: 2rem;
+    padding: .5rem;
+    right: 0;
+    color: $b-3;
+    opacity: .6;
+    transition: opacity 600ms ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .rotate-ccw, .rotate-cw {
+    cursor: pointer;
+  }
+
+  .slider-wrap {
+    display: inline-block;
+    .pict-sm {
+      font-size: .8rem;
+    }
+
+    .pict-lg {
+      font-size: 1.2rem;
+    }
+  }
+
+  .cropit-preview-image-container {
+    cursor: move;
+  }
+
+  .cropit-preview-background {
+    opacity: .2;
+    cursor: auto;
+  }
+
+  .image-size-label {
+    margin-top: 10px;
+  }
+
+  input.cropit-image-input {
+    visibility: hidden;
+  }
+
+  .cropit-preview.cropit-image-loading .spinner {
+    opacity: 1;
+  }
+
+  .cropit-preview.cropit-image-loaded .cropit-preview-image-container {
+    cursor: move;
+  }
+
+  .cropit-image-zoom-input[disabled] {
+    opacity: .2;
+  }
+
+  input.cropit-image-zoom-input {
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px;
+    background: #eee;
+    border-radius: 5px;
+    outline: none;
+  }
+}
+
+.userData {
+  flex-flow: column;
+  justify-content: center;
+  background-color: #f7f7f7;
+  padding-left: .5rem;
+
+  #userName {
+    margin: 1rem 0 0 0;
+    color: $b-2;
+    font-size: .8rem;
+    font-weight: 700;
+  }
+
+  #userLocation {
+    margin: 0;
+    color: $b-3;
+    font-size: .78rem;
+  }
+
+  #userPosition {
+    color: $grey;
+    font-size: .8;
+  }
+}
+
+.userText {
+  padding-bottom: 5rem;
+  .userTitle {
+    color: $blue-3;
+    margin-bottom: 0;
+  }
+
+  .userInst {
+    list-style-type: none;
+    padding-left: 0;
+    color: $grey;
+    font-size: .8rem;
+    margin-top: 0;
+  }
+}
+/*** END USER IMAGE ***/
+
+
+
+.btn-wrap {
+  justify-content: center;
+  align-items: center;
+
+  .slider-wrap {
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+.container-upload {
+  margin: 0 auto;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  max-width: 1000px;
+  justify-content: center;
+}
+
+.headerImages {
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropzone {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.uploadForm {
+  max-width: 100%;
+  flex-direction: column;
+  margin-top: 8rem;
+
+  .subtitleForm {
+    font-family: $jennasue;
+    color: $magenta;
+    font-size: 4rem;
+    text-align: center;
+  }
+}
+
+.recipeTime {
+  background-image: url(https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/create/time.png);
+  background-repeat: no-repeat;
+  background-position: .5rem;
+  background-size: 1.5rem;
+  padding-left: 2.5rem;
+}
+
+.recipeServes {
+  background-image: url(https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/create/serve.png);
+  background-repeat: no-repeat;
+  background-position: .5rem;
+  background-size: 1.5rem;
+  padding-left: 2.5rem;
+}
+
+.dividerForm {
+  justify-content: space-between;
+}
+
+.addSetIngredients, .addSetSteps {
+  color: $blue-3;
+  font-size: 1.2rem;
+}
+
+.lister {
+  width: 100%;
+
+  .ing {
+    color: $blue-1;
+
+    span {
+      color: $b-4;
+      font-size: .8rem;
+    }
+  }
+
+  .addIngredient {
+    color: $green;
+    font-weight: 300;
+    float: right;
+    font-size: .9rem;
+  }
+}
+
+.steps {
+  margin: 1rem 0;
+}
+
+.itemStep {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  label {
+    margin-left: 1.5rem;
+    margin-right: .5rem;
+  }
+
+  .listOfSteps {
+    width: 100%;
+  }
+}
+
+.addStep {
+  color: $green;
+  font-weight: 300;
+  float: right;
+  font-size: .9rem;
+  margin-top: -1rem;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buttonP {
+  display: block;
+  box-sizing: border-box;
+  margin: 2rem 0;
+  padding: 10px 16px;
+  outline: 0;
+  border: 1px solid $green;
+  border-radius: 5px;
+  background: $green;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.3333333;
+  cursor: pointer;
+}
+
+.buttonP:hover {
+  background: rgba($blue-3, 0.8);
+  border: 1px solid $blue-3;
+}
+
+.buttonP:focus {
+  border-color: #0074c2;
+  box-shadow: 0 0 8px rgba(134,200,45, 0.6);
+}
+
+/*************************************************************
+    UPLOAD ENDS
+*************************************************************/
+
+/*************************************************************
+    PREVIEW
+*************************************************************/
+
+.containerPreview {
+  margin: 0 auto;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  max-width: 1600px;
+  justify-content: center;
+}
+
+.previewContent {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.previewImagery {
+  height: 50rem;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+}
+
+.previewPerson {
+  background-color: rgba($w, 0.8);
+  color: $b-1;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  .previewData {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .previewName {
+    font-weight: 500;
+    margin: 0 0 0 1rem;
+    padding: 0;
+  }
+
+  .previewLocation {
+    color: $grey;
+    margin: 0 0 0 1rem;
+    padding: 0;
+  }
+
+  .previewPosition {
+    color: $grey;
+    margin: 1rem 0 0 1rem;
+    padding: 0;
+  }
+
+  .previewUserPic {
+    height: 10rem;
+    width: 10rem;
+    padding: .5rem;
+  }
+}
+
+.previewRecipe {
+  flex-direction: column;
+  justify-content: space-between;;
+
+  .previewTitle {
+    font-family: $impregnable;
+    color: $magenta;
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .previewServings {
+    color: $b-4;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+
+    img {
+      height: 1.5rem;
+      margin-right: 1rem;
+    }
+  }
+}
+
+#previewIngredients {
+  justify-content: space-between;;
+  .piTitle {
+    font-family: $jennasue;
+    color: $magenta;
+    font-size: 2.5rem;
+  }
+
+  .piTitleIng {
+    width: 100%;
+    font-weight: 500;
+    color: $b-2;
+    margin-bottom: 0;
+  }
+
+  .piList {
+    list-style-type: none;
+    padding-left: 0;
+    color: $grey;
+  }
+
+  .piRight {
+    flex-direction: column;
+  }
+}
+
+.previewButtons {
+  justify-content: space-around;
+
+  .pButton {
+    color: $blue-3;
+    border: 1px solid $blue-3;
+    border-radius: .3rem;
+    padding: .5rem 1.5rem;
+
+    &:hover, &.active {
+      background-color: rgba($blue-3, 0.15);
+    }
+  }
+}
+
+.previewReviewButtons {
+  justify-content: center;
+  align-items: center;
+}
+
+.prbSubmit {
+  display: block;
+  box-sizing: border-box;
+  margin: 2rem 0;
+  padding: 10px 2rem;
+  outline: 0;
+  border: 1px solid $green;
+  border-radius: 5px;
+  background: $green;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.3333333;
+  cursor: pointer;
+  margin-right: 2rem;
+
+  &:hover {
+    background: rgba($blue-3, 0.8);
+    border: 1px solid $blue-3;
+  }
+
+  &:focus {
+    border-color: #0074c2;
+    box-shadow: 0 0 8px rgba(134,200,45, 0.6);
+  }
+}
+
+.prbEdit {
+  display: block;
+  box-sizing: border-box;
+  margin: 2rem 0;
+  padding: 10px 2rem;
+  outline: 0;
+  border: 1px solid $yellow;
+  border-radius: 5px;
+  background: $yellow;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.3333333;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba($blue-3, 0.8);
+    border: 1px solid $blue-3;
+  }
+
+  &:focus {
+    border-color: #0074c2;
+    box-shadow: 0 0 8px rgba(134,200,45, 0.6);
+  }
+}
+
+/*************************************************************
+    PREVIEW ENDS
+*************************************************************/
+
+/*************************************************************
+    ADMIN DASHBOARD
+*************************************************************/
+
+.containerAdminDashboard {
+  margin: 0 auto;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  max-width: 1600px;
+  justify-content: center;
+}
+
+.adminMenu {
+  justify-content: flex-end;
+  font-family: $jennasue;
+  margin: 2rem 3rem 0 0;
+
+  .adminMenuItem {
+    padding-right: 1rem;
+    padding-left: 1rem;
+    border-right: 1px solid $b-4;
+    font-size: 1.2rem;
+    text-shadow: none;
+
+    &:hover {
+      text-shadow: 2px 2px 2px rgba(150, 150, 150, 0.64);
+    }
+
+    &:first-child {
+      color: $blue-1;
+    }
+    &:nth-child(2) {
+      color: $green;
+    }
+    &:nth-child(3) {
+      color: $blue-3;
+    }
+    &:last-child {
+      color: $orange;
+      border-right: none;
+    }
+  }
+}
+
+.adminTitle {
+  font-family: $impregnable;
+  color: $magenta;
+  font-size: 4rem;
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.adminMainDash {
+  justify-content: space-between;
+}
+
+/*************************************************************
+    ADMIN DASHBOARD ENDS
+*************************************************************/
+
+/******************************
+    Media Queries
+******************************/
+
+@media screen and (min-width: 30em) {
+  .buttonGroup {
+    justify-content: space-around;
+    flex-direction: row;
+  }
+}
+
+@media screen and (min-width: 48em) {
+  .logos {
+    a {
+      margin-bottom: -3rem;
+    }
+  }
+
+  .container-form {
+    width: 25rem;
+  }
+}
+
+@media screen and (min-width: 81em) {
+  .logos {
+    a {
+      margin-bottom: -7rem;
+    }
+  }
+
+  .container-form {
+    width: 30rem;
+  }
+}
+
+/*********************************************************
+    Media Queries
+*********************************************************/
