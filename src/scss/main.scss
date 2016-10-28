@@ -312,21 +312,6 @@ hr.styled {
     }
   }
 
-  .rotate-ccw, .rotate-cw {
-    cursor: pointer;
-  }
-
-  .slider-wrap {
-    display: inline-block;
-    .pict-sm {
-      font-size: .8rem;
-    }
-
-    .pict-lg {
-      font-size: 1.2rem;
-    }
-  }
-
   .cropit-preview-image-container {
     cursor: move;
   }
@@ -384,6 +369,31 @@ input.cropit-image-zoom-input {
   align-items: center;
 }
 
+.rotate-btns {
+  margin-right: 1rem;
+}
+
+.rotate-cw {
+  margin-left: .5rem;
+}
+
+.rotate-ccw, .rotate-cw {
+  cursor: pointer;
+}
+
+.slider-wrap {
+  display: inline-block;
+  .pict-sm {
+    font-size: .8rem;
+    margin-right: .5rem;
+  }
+
+  .pict-lg {
+    font-size: 1.2rem;
+    margin-left: .5rem;
+  }
+}
+
 .image-user {
   .cropit-preview {
     background-color: #f7f7f7;
@@ -409,21 +419,6 @@ input.cropit-image-zoom-input {
 
     &:hover {
       opacity: 1;
-    }
-  }
-
-  .rotate-ccw, .rotate-cw {
-    cursor: pointer;
-  }
-
-  .slider-wrap {
-    display: inline-block;
-    .pict-sm {
-      font-size: .8rem;
-    }
-
-    .pict-lg {
-      font-size: 1.2rem;
     }
   }
 
@@ -472,6 +467,7 @@ input.cropit-image-zoom-input {
   justify-content: center;
   background-color: #f7f7f7;
   padding-left: .5rem;
+  margin-bottom: 3rem;
 
   #userName {
     margin: 1rem 0 0 0;
@@ -572,6 +568,7 @@ input.cropit-image-zoom-input {
 
 .dividerForm {
   justify-content: space-between;
+  align-items: flex-start;
 }
 
 .addSetIngredients, .addSetSteps {
@@ -599,14 +596,33 @@ input.cropit-image-zoom-input {
   }
 }
 
+.listOfIngredients {
+  .input {
+    margin-bottom: .5rem;
+  }
+}
+
+.listOfSteps {
+  .input {
+    margin-bottom: .5rem;
+  }
+}
+
 .steps {
   margin: 1rem 0;
+}
+
+.wrapSteps {
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .itemStep {
   display: flex;
   flex-direction: row;
   align-items: center;
+  flex-direction: column;
 
   label {
     margin-left: 1.5rem;

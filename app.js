@@ -1,47 +1,59 @@
 var express = require('express');
+var port = process.env.PORT || 3000;
 var app = express();
+var bodyParser = require('body-parser');
 var path = require('path');
 var formidable = require('formidable');
 var fs = require('fs');
 
-app.use(express.static(path.join(__dirname, 'public')));
+var data;
+
+app.use(express.static(path.join(__dirname, 'uploads')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.set('views', './views');
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.get('/', function(req, res){
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.render('index');
 });
 
-app.post('/upload', function(req, res){
-
-  // create an incoming form object
-  var form = new formidable.IncomingForm();
-
-  // specify that we want to allow the user to upload multiple files in a single request
-  form.multiples = true;
-
-  // store all uploads in the /uploads directory
-  form.uploadDir = path.join(__dirname, '/uploads');
-
-  // every time a file has been uploaded successfully,
-  // rename it to it's orignal name
-  form.on('file', function(field, file) {
-    fs.rename(file.path, path.join(form.uploadDir, file.name));
-  });
-
-  // log any errors that occur
-  form.on('error', function(err) {
-    console.log('An error has occured: \n' + err);
-  });
-
-  // once all the files have been uploaded, send a response to the client
-  form.on('end', function() {
-    res.end('success');
-  });
-
-  // parse the incoming request containing the form data
-  form.parse(req);
-
+app.get('/login', function(req, res){
+  res.render('login');
 });
 
-var server = app.listen(3000, function(){
+app.post('/loginForm',function(req, res){
+  data = req.body;
+  saveData(data, function(err) {
+    if(err) {
+      res.status(404).send('Data not saved');
+      return;
+    }
+    res.redirect('/upload');
+  });
+});
+
+app.get('/upload', function(req, res){
+  res.render('upload', {
+    userName: data.firstName + ' '+ data.lastName,
+    userLocation: data.city,
+    userPosition: data.position
+  });
+});
+
+function saveData(data, callback) {
+  var id = JSON.stringify(data.employeeid);
+  id = id.replace(/['"]+/g, '');
+  fs.writeFile('./uploads/cookdata-'+ id +'.json', JSON.stringify(data), callback);
+};
+
+
+app.get(/^(.+)$/, function(req, res){
+   res.sendFile( __dirname + req.params[0]);
+});
+
+app.listen(port, function(){
   console.log('Server listening on port 3000');
 });

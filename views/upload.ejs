@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> 
+<!--[if gt IE 8]><!-->
 <html class="no-js" lang="es_MX"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
@@ -26,7 +26,7 @@
       <div class="row loginHeader">
         <img src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/create/start.png" alt="Logo" class="col2024 colm1424 coll1624 imgResponsive">
       </div>
-      
+
       <div class="row col1 headerImages">
         <form action="#" class="col1124 dropzone" id="portImage">
           <div class="leftDropper col1">
@@ -35,25 +35,25 @@
                 <div class="select-image-btn" id="plusOne"> + </div>
               </div>
               <input type="file" class="cropit-image-input" accept="image/*" id="fileUploadMain">
-              
+
               <div class="btn-wrap col1">
                 <div class="rotate-btns">
                   <span class="rotate-ccw" id="rotate1"><i class="fa fa-undo" aria-hidden="true"></i></span>
                   <span class="rotate-cw" id="rotate2"><i class="fa fa-repeat" aria-hidden="true"></i></span>
                 </div>
-                
+
                 <div class="slider-wrap">
                   <span><i class="fa fa-picture-o pict-sm" aria-hidden="true"></i></span>
                   <input type="range" class="cropit-image-zoom-input">
                   <span><i class="fa fa-picture-o pict-lg" aria-hidden="true"></i></span>
                 </div>
               </div>
-              
+
               <button class="export" id="uploadMain">Upload</button>
             </div>
           </div>
         </form>
-        
+
         <form action="#" class="col1224 dropzone" id="userImage">
           <div class="userText">
             <p class="userTitle">
@@ -65,54 +65,54 @@
               <li>Format: jpg, png</li>
             </ul>
           </div>
-          
+
           <div class="rightDropper col1">
             <div class="userData col1224">
-              <p id="userName">Theresa Mendoza-Bradley</p>
-              <p id="userLocation">Alabama</p>
-              <p id="userPosition">Risk Specialist III</p>
+              <p id="userName"><%= userName %></p>
+              <p id="userLocation"><%= userLocation %></p>
+              <p id="userPosition"><%= userPosition %></p>
             </div>
-            
+
             <div class="image-user col1224">
               <div class="cropit-preview">
                 <div class="select-image-btn" id="plusUser"> + </div>
               </div>
               <input type="file" class="cropit-image-input" accept="image/*" id="fileUploadUser">
-              
+
               <div class="btn-wrap col1">
                 <div class="rotate-btns">
                   <span class="rotate-ccw" id="rotate3"><i class="fa fa-undo" aria-hidden="true"></i></span>
                   <span class="rotate-cw" id="rotate4"><i class="fa fa-repeat" aria-hidden="true"></i></span>
                 </div>
-                
+
                 <div class="slider-wrap">
                   <span><i class="fa fa-picture-o pict-sm" aria-hidden="true"></i></span>
                   <input type="range" class="cropit-image-zoom-input">
                   <span><i class="fa fa-picture-o pict-lg" aria-hidden="true"></i></span>
                 </div>
               </div>
-              
+
               <button class="export" id="uploadUser">Upload</button>
             </div>
           </div>
         </form>
       </div>
-      
-      <form action="" class="col1 uploadForm">
+
+      <form id="uploadRecipe" action="" class="col1 uploadForm">
         <div class="formGroup coll1524">
           <label for="recipeTitle" class="label">
             Recipe title:
           </label>
           <input type="text" class="input" id="recipeTitle" name="recipeTitle" placeholder="Super awesome recipe...">
         </div>
-        
+
         <div class="formGroup coll624">
           <label for="recipeServings" class="label">
             Servings:
           </label>
           <input type="text" class="input recipeServes" id="recipeServings" name="recipeServings">
         </div>
-        
+
         <div class="formGroup">
           <label for="recipeCat" class="label">
             Category:
@@ -124,11 +124,11 @@
               <option value="desert">Deserts</option>
             </select>
         </div>
-        
+
         <h2 class="subtitleForm">Ingredients:</h2>
-        
-        <div class="dividerForm col1">
-         
+
+        <div class="dividerForm col1" id="dividerForm">
+
           <div class="divPartForm coll1024">
             <div class="formGroup lister" id="ingredients">
               <label for="setIngredient-1" class="label ing">
@@ -142,13 +142,13 @@
               <label for="recipeIngredient-1" class="label">
                 List:
               </label>
-              <div class="listOfIngredients">
+              <div class="listOfIngredients" id="loi-1">
                 <input type="text" class="input" id="recipeIngredient-1" name="recipeIngredient-1" placeholder="Example: 1 cup of flour">
               </div>
-              <p><a href="#" class="addIngredient">+Add ingredient</a></p>
+              <p><a href="#!" class="addIngredient" id="addIng-1">+Add ingredient</a></p>
             </div>
           </div>
-          
+
           <div class="divPartForm coll1024">
             <div class="formGroup lister" id="ingredients">
               <label for="setIngredient-2" class="label ing">
@@ -162,97 +162,105 @@
               <label for="recipeIngredient-2" class="label">
                 List:
               </label>
-              <div class="listOfIngredients">
-                <input type="text" class="input" id="recipeIngredient-2" name="recipeIngredient-2" placeholder="Example: 8oz chocolate chips">
+              <div class="listOfIngredients" id="loi-2">
+                <input type="text" class="input" id="recipeIngredient2-1" name="recipeIngredient2-1" placeholder="Example: 8oz chocolate chips">
               </div>
-              <p><a href="#" class="addIngredient">+Add ingredient</a></p>
+              <p><a href="#!" class="addIngredient" id="addIng-2">+Add ingredient</a></p>
             </div>
           </div>
-          
-          <div class="divPartForm coll1024">
-            <a href="#" class="addSetIngredients">+ Add another set of ingredients</a>
-          </div>
+
         </div>
-        
-        <h2 class="subtitleForm">Instructions:</h2>
-        
-        <div class="formGroup lister">
-          <label for="recipeMethod-1" class="label ing">
-            Instructions:
-          </label>
-          <div class="instructions">
-            <input type="text" class="input" id="recipeMethod-1" name="recipeMethod-1" placeholder="Example: Cake">
-          </div>
-        </div>
-        
-        <h3 class="steps">Steps:</h3>
-        
-        <div class="formGroup lister itemStep">
-          <label for="recipeMethod-1" class="label ing">
-            1. 
-          </label>
-          <div class="listOfSteps">
-            <input type="text" class="input" id="recipeStep-1" name="recipeStep-1" placeholder="Example: Mix the ingredients...">
-          </div>
-        </div>
-        
-        <p><a href="#" class="addStep">+Add step</a></p>
-        
-        <div class="formGroup lister">
-          <label for="recipeMethod-1" class="label ing">
-            Instructions for Set 2: <span>(If not necesary leave blank)</span>
-          </label>
-          <div class="instructions">
-            <input type="text" class="input" id="recipeMethod-1" name="recipeMethod-1" placeholder="Example: Icing">
-          </div>
-        </div>
-        
-        <h3 class="steps">Steps:</h3>
-        
-        <div class="formGroup lister itemStep">
-          <label for="recipeMethod-1" class="label ing">
-            1. 
-          </label>
-          <div class="listOfSteps">
-            <input type="text" class="input" id="recipeStep-1" name="recipeStep-1" placeholder="Example: Warm chocolate chips...">
-          </div>
-        </div>
-        
-        <p><a href="#" class="addStep">+Add step</a></p>
-        
+
         <div class="divPartForm coll1024">
-          <a href="#" class="addSetSteps">+ Add another set of instructions</a>
+          <a href="#!" class="addSetIngredients" id="addSetIng">+ Add another set of ingredients</a>
         </div>
-         
+
+        <h2 class="subtitleForm">Instructions:</h2>
+
+        <div id="instructionsSets">
+          <div class="formGroup lister">
+            <label for="recipeMethod-1" class="label ing">
+              Instructions:
+            </label>
+            <div class="instructions">
+              <input type="text" class="input" id="recipeMethod-1" name="recipeMethod-1" placeholder="Example: Cake">
+            </div>
+          </div>
+
+          <h3 class="steps">Steps:</h3>
+
+          <div class="formGroup lister itemStep" id="los-1">
+            <div class="wrapSteps">
+              <label for="recipeSteps-1" class="label ing">
+                1.
+              </label>
+              <div class="listOfSteps">
+                <input type="text" class="input" id="recipeStep-1" name="recipeStep-1" placeholder="Example: Mix the ingredients...">
+              </div>
+            </div>
+          </div>
+
+          <p><a href="#!" class="addStep" id="addStep-1">+Add step</a></p>
+
+          <div class="formGroup lister">
+            <label for="recipeMethod2-1" class="label ing">
+              Instructions for Set 2: <span>(If not necesary leave blank)</span>
+            </label>
+            <div class="instructions">
+              <input type="text" class="input" id="recipeMethod2-1" name="recipeMethod2-1" placeholder="Example: Icing">
+            </div>
+          </div>
+
+          <h3 class="steps">Steps:</h3>
+
+          <div class="formGroup lister itemStep" id="los-2">
+            <div class="wrapSteps">
+              <label for="recipeSteps2-1" class="label ing">
+                1.
+              </label>
+              <div class="listOfSteps">
+                <input type="text" class="input" id="recipeStep2-1" name="recipeStep2-1" placeholder="Example: Warm chocolate chips...">
+              </div>
+            </div>
+          </div>
+
+          <p><a href="#!" class="addStep" id="addStep-2">+Add step</a></p>
+        </div>
+
+        <div class="divPartForm coll1024">
+          <a href="#!" class="addSetSteps" id="addSetSteps">+ Add another set of instructions</a>
+        </div>
+
          <h2 class="subtitleForm">About your recipe:</h2>
-          
+
         <div class="formGroup">
           <label for="recipeStory" class="label">
             Share a little bit of the story of your recipe:
           </label>
           <textarea class="input" id="recipeStory" name="recipeStory" placeholder="You have a 250 characters limit." maxlength="250" rows="5"></textarea>
         </div>
-        
+
         <hr class="styled">
-        
+
         <div class="formGroup buttonGroup">
           <button class="col1 colm1024 btn buttonP" type="submit">
             Preview your recipe
           </button>
         </div>
-        
+
       </form>
-      
-      
+
+
       <footer class="row mainFooter">
         <div class="col824 colm624 coll324">
           <a href="index.html"><img src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/logo-taste.png" alt="Taste logo" class="imgResponsive"></a>
         </div>
       </footer>
-    </div> 
-    <!-- /container -->        
+    </div>
+    <!-- /container -->
 
     <!--script src="dist/vendor/dropzone.js"></script-->
-    <script src="dist/js/main.min.js"></script>
+    <script src="src/js/uploadForm.js"></script>
+    <script src="src/js/main.js"></script>
   </body>
 </html>
