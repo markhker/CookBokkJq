@@ -121,6 +121,8 @@ app.post('/uploadRecipe',function(req, res){
   sess.userData.recipe = data;
   sess.userData.userImage = userImg;
   sess.userData.dishImage = dishImg;
+  
+  console.log(sess.userData);
   res.redirect('/preview')
 });
 
@@ -128,11 +130,37 @@ app.get('/preview', function(req, res){
   sess = req.session;
   if(!sess.userData.employeeid) {
     res.redirect('/login');
-  }
+  };
+  
   res.render('preview', {
     userName: sess.userData.firstName + ' '+ sess.userData.lastName,
     userLocation: sess.userData.city,
-    userPosition: sess.userData.position
+    userPosition: sess.userData.position,
+    dishImage: sess.userData.dishImage,
+    userImage: sess.userData.userImage,
+    recipeTitle: sess.userData.recipe.recipeTitle,
+    servings: sess.userData.recipe.recipeServings,
+    setIng1: sess.userData.recipe.setIngredient_1,
+    recipeIng1: sess.userData.recipe.recipeIngredient_1,
+    setIng2: sess.userData.recipe.setIngredient_2,
+    recipeIng2: sess.userData.recipe.recipeIngredient_2,
+    setIng3: sess.userData.recipe.setIngredient_3,
+    recipeIng3: sess.userData.recipe.recipeIngredient_3,
+    setIng4: sess.userData.recipe.setIngredient_4,
+    recipeIng4: sess.userData.recipe.recipeIngredient_4,
+    setIng5: sess.userData.recipe.setIngredient_5,
+    recipeIng5: sess.userData.recipe.recipeIngredient_5,
+    meth1: sess.userData.recipe.recipeMethod_1,
+    recipeMeth1: sess.userData.recipe.recipeStep_1,
+    meth2: sess.userData.recipe.recipeMethod_2,
+    recipeMeth2: sess.userData.recipe.recipeStep_2,
+    meth3: sess.userData.recipe.recipeMethod_3,
+    recipeMeth3: sess.userData.recipe.recipeStep_3,
+    meth4: sess.userData.recipe.recipeMethod_4,
+    recipeMeth4: sess.userData.recipe.recipeStep_4,
+    meth5: sess.userData.recipe.recipeMethod_5,
+    recipeMeth5: sess.userData.recipe.recipeStep_5,
+    recipeStory: sess.userData.recipe.recipeStory,
   });
 });
 

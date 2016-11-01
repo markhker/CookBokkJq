@@ -28,77 +28,155 @@
       </div>
 
       <div class="col1 previewContent">
-        <div class="previewImagery coll1124" style="background-image:url('https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/preview/cover.jpg')">
+        <div class="previewImagery coll1124" style="background-image:url('<%= dishImage %>')">
           <div class="previewPerson">
             <div class="previewData">
               <p class="previewName">
-                Theresa Mendoza-Bradley
+                <%= userName %>
               </p>
               <p class="previewLocation">
-                Alabama
+                <%= userLocation %>
               </p>
               <p class="previewPosition">
-                Risk Specialist III
+                <%= userPosition %>
               </p>
             </div>
-            <img src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/preview/user.jpg" alt="" class="previewUserPic">
+            <img src="<%= userImage %>" alt="" class="previewUserPic">
           </div>
         </div>
 
         <div class="previewRecipe coll1224">
           <h1 class="previewTitle">
-            Favourite Carrot Cake
+            <%= recipeTitle %>
           </h1>
 
           <p class="previewServings">
             <img src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/create/serve.png" alt="">
-            4 Servings
+            <%= servings %> Servings
           </p>
 
-          <div id="previewIngredients" class="col1">
+          <div id="previewIngredients" class="col1 previewer">
             <h2 class="piTitle col1">Ingredients</h2>
 
             <div class="piLeft col1124">
-              <p id="piTitleIng-1" class="piTitleIng">Cake</p>
-              <ul id="piListIng-1" class="piList">
-                <li>2 1/2 cups flour</li>
-                <li>2 cups sugar</li>
-                <li>1 1/2 cups oil</li>
-                <li>3 eggs</li>
-                <li>1 lb. shredded carrots</li>
-                <li>1 cup raisins</li>
-                <li>2 tsp cinnamon</li>
-                <li>2 tbsp baking soda</li>
-                <li>1 tsp salt</li>
-                <li>1 cup pineapple tid bids</li>
-                <li>1 tsp vanilla</li>
-                <li>1 cup chopped walnuts</li>
+              <p class="piTitleIng"><%= setIng1 %></p>
+              <ul class="piList">
+               <% for(var i=0; i<recipeIng1.length; i++) { %>
+                <li><%= recipeIng1[0] %></li>
+               <% } %>
               </ul>
+              
+              <% if(setIng2) { %>
 
-              <p id="piTitleIng-2" class="piTitleIng">Decoration</p>
-              <ul id="piListIng-2" class="piList">
-                <li>3/4 lb. cream cheese (room temperature)</li>
-                <li>1/2 lb. butter (room temperature)</li>
-                <li>1 tsp vanilla</li>
-                <li>1 lb. powdered sugar</li>
+              <p class="piTitleIng"><%= setIng2 %></p>
+              <ul class="piList">
+                <% for(var i=0; i<recipeIng2.length; i++) { %>
+                <li><%= recipeIng2[i] %></li>
+               <% } %>
               </ul>
+              <% } %>
             </div>
 
             <div class="piRight col1224">
-              <p id="piTitleIng-3" class="piTitleIng">Frosting</p>
-              <ul id="piListIng-3" class="piList">
-                <li>3/4 lb. cream cheese (room temperature)</li>
-                <li>1/2 lb. butter (room temperature)</li>
-                <li>1 tsp vanilla</li>
-                <li>1 lb. powdered sugar</li>
+              <% if(setIng3) { %>
+
+              <p class="piTitleIng"><%= setIng3 %></p>
+              <ul class="piList">
+                <% for(var i=0; i<recipeIng3.length; i++) { %>
+                <li><%= recipeIng3[i] %></li>
+               <% } %>
               </ul>
+              <% } %>
+              
+              <% if(setIng4) { %>
+
+              <p class="piTitleIng"><%= setIng4 %></p>
+              <ul class="piList">
+                <% for(var i=0; i<recipeIng4.length; i++) { %>
+                <li><%= recipeIng4[i] %></li>
+               <% } %>
+              </ul>
+              <% } %>
+              
+              <% if(setIng5) { %>
+
+              <p class="piTitleIng"><%= setIng5 %></p>
+              <ul class="piList">
+                <% for(var i=0; i<recipeIng5.length; i++) { %>
+                <li><%= recipeIng5[i] %></li>
+               <% } %>
+              </ul>
+              <% } %>
+            </div>
+          </div>
+          
+          <div id="previewInstructions" class="col1 previewer">
+            <h2 class="piTitle col1">Instructions</h2>
+
+            <div class="piLeft col1124">
+              <p class="piTitleIng"><%= meth1 %></p>
+              <ul class="piList">
+               <% for(var i=0; i<recipeMeth1.length; i++) { %>
+                <li><%= recipeMeth1[i] %></li>
+               <% } %>
+              </ul>
+              
+              <% if(meth2) { %>
+
+              <p class="piTitleIng"><%= meth2 %></p>
+              <ul class="piList">
+                <% for(var i=0; i<recipeMeth2.length; i++) { %>
+                <li><%= recipeMeth2[i] %></li>
+               <% } %>
+              </ul>
+              <% } %>
+            </div>
+
+            <div class="piRight col1224">
+              <% if(meth3) { %>
+
+              <p class="piTitleIng"><%= meth3 %></p>
+              <ul class="piList">
+                <% for(var i=0; i<recipeMeth3.length; i++) { %>
+                <li><%= recipeMeth3[i] %></li>
+               <% } %>
+              </ul>
+              <% } %>
+              
+              <% if(meth4) { %>
+
+              <p class="piTitleIng"><%= meth4 %></p>
+              <ul class="piList">
+                <% for(var i=0; i<recipeMeth4.length; i++) { %>
+                <li><%= recipeMeth4[i] %></li>
+               <% } %>
+              </ul>
+              <% } %>
+              
+              <% if(meth5) { %>
+
+              <p class="piTitleIng"><%= meth5 %></p>
+              <ul class="piList">
+                <% for(var i=0; i<recipeMeth5.length; i++) { %>
+                <li><%= recipeMeth5[i] %></li>
+               <% } %>
+              </ul>
+              <% } %>
+            </div>
+          </div>
+          
+          <div id="previewAbout" class="col1 previewer">
+            <h2 class="piTitle col1">About the recipe</h2>
+
+            <div class="piLeft col1124">
+              <p class="piTitleIng"><%= recipeStory %></p>
             </div>
           </div>
 
           <div class="previewButtons col1">
-            <a href="#" class="pButton active">Ingredients</a>
-            <a href="#" class="pButton">Instructions</a>
-            <a href="#" class="pButton">About the recipe</a>
+            <a href="#" class="pButton active" id="btnIng">Ingredients</a>
+            <a href="#" class="pButton" id="btnInst">Instructions</a>
+            <a href="#" class="pButton" id="btnAbout">About the recipe</a>
           </div>
 
         </div>
