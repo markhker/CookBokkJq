@@ -10,7 +10,7 @@ var formidable = require('formidable');
 var fs = require('fs');
 var app = express();
 
-var data, sess;
+var data, sess, userImg, dishImg;
 
 AWS.config.loadFromPath('./s3_config.json');
 var s3Bucket = new AWS.S3( { params: {Bucket: 'elasticbeanstalk-us-west-2-524253160393'} } );
@@ -37,8 +37,7 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 app.post('/post-image', function(req, res, next){
   sess = req.session;
   var id = sess.userData.employeeid;
-  sess.userData.dishImage = s3Url + 'dishImage-' + id;
-  console.log(sess.userData.dishImage);
+  dishImg = s3Url + 'dishImage-' + id;
   buf = new Buffer(req.body.imageBinary.replace(/^data:image\/\w+;base64,/, ""),'base64')
   var data = {
     Key: 'dishImage-'+id,
@@ -60,8 +59,7 @@ app.post('/post-image', function(req, res, next){
 app.post('/post-image-user', function(req, res, next){
   sess = req.session;
   var id = sess.userData.employeeid;
-  sess.userData.userImage = s3Url + 'userImage-' + id;
-  console.log(sess.userData.userImage);
+  userImg = s3Url + 'userImage-' + id;
   buf = new Buffer(req.body.imageBinary.replace(/^data:image\/\w+;base64,/, ""),'base64')
   var data = {
     Key: 'userImage-'+id,
@@ -121,6 +119,8 @@ app.post('/uploadRecipe',function(req, res){
   data = req.body;
   sess = req.session;
   sess.userData.recipe = data;
+  sess.userData.userImage = userImg;
+  sess.userData.dishImage = dishImg;
   res.redirect('/preview')
 });
 
@@ -134,7 +134,6 @@ app.get('/preview', function(req, res){
     userLocation: sess.userData.city,
     userPosition: sess.userData.position
   });
-  console.log(sess.userData);
 });
 
 function saveData(data, callback) {

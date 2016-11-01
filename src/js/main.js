@@ -57,14 +57,14 @@ $(function() {
   var counter1 = 2;
   $('#addIng-1').click(function(e) {
     e.preventDefault();
-    $('#loi-1').append('<input type="text" class="input" id="recipeIngredient-'+counter1+'" name="recipeIngredient-'+counter1+'" placeholder="Example: 1 cup of flour">')
+    $('#loi-1').append('<input type="text" class="input" id="recipeIngredient_'+counter1+'" name="recipeIngredient_'+counter1+'" placeholder="Example: 1 cup of flour">')
     counter1++;
   });
 
   var counter2 = 2;
   $('#addIng-2').click(function(e) {
     e.preventDefault();
-    $('#loi-2').append('<input type="text" class="input" id="recipeIngredient2-'+counter2+'" name="recipeIngredient2-'+counter2+'" placeholder="Example: 8oz chocolate chips">')
+    $('#loi-2').append('<input type="text" class="input" id="recipeIngredient2_'+counter2+'" name="recipeIngredient2_'+counter2+'" placeholder="Example: 8oz chocolate chips">')
     counter2++;
   });
 
@@ -75,7 +75,7 @@ $(function() {
   function appendClicker1() {
     $('#addIng-3').click(function(e) {
       e.preventDefault();
-      $('#loi-3').append('<input type="text" class="input" id="recipeIngredient3-'+counter3+'" name="recipeIngredient3-'+counter3+'" placeholder="Example: 8oz chocolate chips">')
+      $('#loi-3').append('<input type="text" class="input" id="recipeIngredient3_'+counter3+'" name="recipeIngredient3_'+counter3+'" placeholder="Example: 8oz chocolate chips">')
       counter3++;
     });
   };
@@ -83,7 +83,7 @@ $(function() {
   function appendClicker2() {
     $('#addIng-4').click(function(e) {
       e.preventDefault();
-      $('#loi-4').append('<input type="text" class="input" id="recipeIngredient4-'+counter4+'" name="recipeIngredient4-'+counter4+'" placeholder="Example: 8oz chocolate chips">')
+      $('#loi-4').append('<input type="text" class="input" id="recipeIngredient4_'+counter4+'" name="recipeIngredient4_'+counter4+'" placeholder="Example: 8oz chocolate chips">')
       counter4++;
     });
   };
@@ -91,7 +91,7 @@ $(function() {
   function appendClicker3() {
     $('#addIng-5').click(function(e) {
       e.preventDefault();
-      $('#loi-5').append('<input type="text" class="input" id="recipeIngredient5-'+counter5+'" name="recipeIngredient5-'+counter5+'" placeholder="Example: 8oz chocolate chips">')
+      $('#loi-5').append('<input type="text" class="input" id="recipeIngredient5_'+counter5+'" name="recipeIngredient5_'+counter5+'" placeholder="Example: 8oz chocolate chips">')
       counter5++;
     });
   };
@@ -100,7 +100,7 @@ $(function() {
   var setIng = 3;
   $('#addSetIng').click(function(e) {
     e.preventDefault();
-    $('#dividerForm').append('<div class="divPartForm coll1024"><div class="formGroup lister" id="ingredients"><label for="setIngredient-'+setIng+'" class="label ing">Ingredients:</label><div class="setOfIngredients"><input type="text" class="input" id="setIngredient-'+setIng+'" name="setIngredient-'+setIng+'" placeholder="Example: Cake"></div></div><div class="formGroup lister" id="ingredients"><label for="recipeIngredient-'+setIng+'" class="label">List:</label><div class="listOfIngredients" id="loi-'+setIng+'"><input type="text" class="input" id="recipeIngredient'+setIng+'-1" name="recipeIngredient'+setIng+'-1" placeholder="Example: 1 cup of flour"></div><p><a href="#!" class="addIngredient" id="addIng-'+setIng+'">+Add ingredient</a></p></div></div>');
+    $('#dividerForm').append('<div class="divPartForm coll1024"><div class="formGroup lister" id="ingredients"><label for="setIngredient_'+setIng+'" class="label ing">Ingredients:</label><div class="setOfIngredients"><input type="text" class="input" id="setIngredient_'+setIng+'" name="setIngredient_'+setIng+'" placeholder="Example: Cake"></div></div><div class="formGroup lister" id="ingredients"><label for="recipeIngredient_'+setIng+'" class="label">List:</label><div class="listOfIngredients" id="loi-'+setIng+'"><input type="text" class="input" id="recipeIngredient'+setIng+'_1" name="recipeIngredient'+setIng+'_1" placeholder="Example: 1 cup of flour"></div><p><a href="#!" class="addIngredient" id="addIng-'+setIng+'">+Add ingredient</a></p></div></div>');
 
     if(setIng == 3) {
       appendClicker1()
@@ -121,14 +121,14 @@ $(function() {
   var step1 = 2;
   $('#addStep-1').click(function(e) {
     e.preventDefault();
-    $('#los-1').append('<div class="wrapSteps"><label for="recipeSteps-'+step1+'" class="label ing">'+step1+'.</label><div class="listOfSteps"><input type="text" class="input" id="recipeStep-'+step1+'" name="recipeStep-'+step1+'" placeholder="Example: Mix the ingredients..."></div></div>')
+    $('#los-1').append('<div class="wrapSteps"><label for="recipeSteps_'+step1+'" class="label ing">'+step1+'.</label><div class="listOfSteps"><input type="text" class="input" id="recipeStep_'+step1+'" name="recipeStep_'+step1+'" placeholder="Example: Mix the ingredients..."></div></div>')
     step1++;
   });
 
   var step2 = 2;
   $('#addStep-2').click(function(e) {
     e.preventDefault();
-    $('#los-2').append('<div class="wrapSteps"><label for="recipeSteps-'+step2+'" class="label ing">'+step2+'.</label><div class="listOfSteps"><input type="text" class="input" id="recipeStep-'+step2+'" name="recipeStep-'+step2+'" placeholder="Example: Mix the ingredients..."></div></div>')
+    $('#los-2').append('<div class="wrapSteps"><label for="recipeSteps2_'+step2+'" class="label ing">'+step2+'.</label><div class="listOfSteps"><input type="text" class="input" id="recipeStep2_'+step2+'" name="recipeStep2_'+step2+'" placeholder="Example: Mix the ingredients..."></div></div>')
     step2++;
   });
 
@@ -139,7 +139,7 @@ $(function() {
   function appendClicker4() {
     $('#addStep-3').click(function(e) {
       e.preventDefault();
-      $('#los-3').append('<div class="wrapSteps"><label for="recipeSteps-'+step3+'" class="label ing">'+step3+'.</label><div class="listOfSteps"><input type="text" class="input" id="recipeStep-'+step3+'" name="recipeStep-'+step3+'" placeholder="Example: Mix the ingredients..."></div></div>')
+      $('#los-3').append('<div class="wrapSteps"><label for="recipeSteps3_'+step3+'" class="label ing">'+step3+'.</label><div class="listOfSteps"><input type="text" class="input" id="recipeStep3_'+step3+'" name="recipeStep3_'+step3+'" placeholder="Example: Mix the ingredients..."></div></div>')
       step3++;
     });
   };
@@ -147,7 +147,7 @@ $(function() {
   function appendClicker5() {
     $('#addStep-4').click(function(e) {
       e.preventDefault();
-      $('#los-4').append('<div class="wrapSteps"><label for="recipeSteps-'+step4+'" class="label ing">'+step4+'.</label><div class="listOfSteps"><input type="text" class="input" id="recipeStep-'+step4+'" name="recipeStep-'+step4+'" placeholder="Example: Mix the ingredients..."></div></div>')
+      $('#los-4').append('<div class="wrapSteps"><label for="recipeSteps4_'+step4+'" class="label ing">'+step4+'.</label><div class="listOfSteps"><input type="text" class="input" id="recipeStep4_'+step4+'" name="recipeStep4_'+step4+'" placeholder="Example: Mix the ingredients..."></div></div>')
       step4++;
     });
   };
@@ -155,7 +155,7 @@ $(function() {
   function appendClicker6() {
     $('#addStep-5').click(function(e) {
       e.preventDefault();
-      $('#los-5').append('<div class="wrapSteps"><label for="recipeSteps-'+step5+'" class="label ing">'+step5+'.</label><div class="listOfSteps"><input type="text" class="input" id="recipeStep-'+step5+'" name="recipeStep-'+step5+'" placeholder="Example: Mix the ingredients..."></div></div>')
+      $('#los-5').append('<div class="wrapSteps"><label for="recipeSteps5_'+step5+'" class="label ing">'+step5+'.</label><div class="listOfSteps"><input type="text" class="input" id="recipeStep5_'+step5+'" name="recipeStep5_'+step5+'" placeholder="Example: Mix the ingredients..."></div></div>')
       step5++;
     });
   };
@@ -164,7 +164,7 @@ $(function() {
   var setStep = 3;
   $('#addSetSteps').click(function(e) {
     e.preventDefault();
-    $('#instructionsSets').append('<div class="formGroup lister"><label for="recipeMethod'+setStep+'-1" class="label ing">Instructions</label><div class="instructions"><input type="text" class="input" id="recipeMethod'+setStep+'-1" name="recipeMethod'+setStep+'-1" placeholder="Example: Icing"></div></div><h3 class="steps">Steps:</h3><div class="formGroup lister itemStep" id="los-'+setStep+'"><div class="wrapSteps"><label for="recipeSteps'+setStep+'-1" class="label ing">1.</label><div class="listOfSteps"><input type="text" class="input" id="recipeStep'+setStep+'-1" name="recipeStep'+setStep+'-1" placeholder="Example: Warm chocolate chips..."></div></div></div><p><a href="#!" class="addStep" id="addStep-'+setStep+'">+Add step</a></p>');
+    $('#instructionsSets').append('<div class="formGroup lister"><label for="recipeMethod'+setStep+'_1" class="label ing">Instructions</label><div class="instructions"><input type="text" class="input" id="recipeMethod'+setStep+'_1" name="recipeMethod'+setStep+'_1" placeholder="Example: Icing"></div></div><h3 class="steps">Steps:</h3><div class="formGroup lister itemStep" id="los-'+setStep+'"><div class="wrapSteps"><label for="recipeSteps'+setStep+'_1" class="label ing">1.</label><div class="listOfSteps"><input type="text" class="input" id="recipeStep'+setStep+'_1" name="recipeStep'+setStep+'_1" placeholder="Example: Warm chocolate chips..."></div></div></div><p><a href="#!" class="addStep" id="addStep-'+setStep+'">+Add step</a></p>');
 
     if(setStep == 3) {
       appendClicker4()
@@ -192,7 +192,7 @@ $(function() {
       data: JSON.stringify($('#uploadRecipe').serializeObject()),
       success: function() {
         console.log('success');
-        window.location = '/upload';
+        window.location = '/preview';
       },
       error: function() {
         console.log('failed');
