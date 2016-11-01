@@ -1,5 +1,20 @@
 
 $(function() {
+
+  $('.disabled').prop('disabled', true);
+
+  $('#acceptance').keypress(function() {
+    if($('#acceptance').val()) {
+      $('.next').prop('disabled', false).removeClass('disabled');
+    }
+  });
+
+  $('#acceptance').change(function() {
+    if (!$('#acceptance').val()) {
+      $('.next').prop('disabled', true).addClass('disabled');
+    }
+  });
+
   /*FORMS AI*/
   $.fn.serializeObject = function() {
     var o = {};
@@ -17,6 +32,7 @@ $(function() {
     return o;
   };
 
+/*
   $('#loginForm').bind('submit', function(e) {
     console.log(JSON.stringify($('#loginForm').serializeObject()));
 
@@ -35,6 +51,32 @@ $(function() {
     });
     return false;
   });
+
+  */
+
+  $('#loginForm').bind('submit', function(e) {
+
+    localStorage.setItem('data', JSON.stringify($('#loginForm').serializeObject()));
+    var stored = localStorage.getItem('data');
+    console.log(stored);
+
+    $.ajax({
+      url: '/loginForm',
+      type: 'post',
+      contentType: 'application/json',
+      data: JSON.stringify($('#loginForm').serializeObject()),
+      success: function() {
+        console.log('success');
+        window.location = '/upload';
+      },
+      error: function() {
+        console.log('failed');
+      }
+    });
+    return false;
+  });
+
+
   /*ENDS FORMS AI*/
 
   /*ADD ITEMS UPLOAD FORM*/

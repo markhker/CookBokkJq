@@ -31,9 +31,13 @@
     "uglify-js": "latest"
   },
   "dependencies": {
+    "aws-sdk": "^2.6.12",
     "body-parser": "^1.15.2",
     "ejs": "^2.5.2",
     "express": "^4.13.3",
-    "formidable": "^1.0.17"
+    "express-session": "^1.14.2",
+    "formidable": "^1.0.17",
+    "s3-image-uploader": "^1.0.5",
+    "session-file-store": "^0.2.2"
   }
 }
