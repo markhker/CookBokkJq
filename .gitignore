@@ -8,3 +8,5 @@ ncp-debug.log
 npm-debug.log
 .DS_Store
 aws.json
+s3_config.json
+sessions
