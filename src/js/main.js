@@ -32,33 +32,7 @@ $(function() {
     return o;
   };
 
-/*
   $('#loginForm').bind('submit', function(e) {
-    console.log(JSON.stringify($('#loginForm').serializeObject()));
-
-    $.ajax({
-      url: '/loginForm',
-      type: 'post',
-      contentType: 'application/json',
-      data: JSON.stringify($('#loginForm').serializeObject()),
-      success: function() {
-        console.log('success');
-        window.location = '/upload';
-      },
-      error: function() {
-        console.log('failed');
-      }
-    });
-    return false;
-  });
-
-  */
-
-  $('#loginForm').bind('submit', function(e) {
-
-    localStorage.setItem('data', JSON.stringify($('#loginForm').serializeObject()));
-    var stored = localStorage.getItem('data');
-    console.log(stored);
 
     $.ajax({
       url: '/loginForm',
@@ -207,5 +181,24 @@ $(function() {
     }
   });
   /*ENDS ADD ITEMS UPLOAD FORM*/
+
+  /*SEND UPLOAD FORM*/
+  $('#uploadRecipe').bind('submit', function(e) {
+
+    $.ajax({
+      url: '/uploadRecipe',
+      type: 'post',
+      contentType: 'application/json',
+      data: JSON.stringify($('#uploadRecipe').serializeObject()),
+      success: function() {
+        console.log('success');
+        window.location = '/upload';
+      },
+      error: function() {
+        console.log('failed');
+      }
+    });
+    return false;
+  });
 
 });

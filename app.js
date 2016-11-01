@@ -117,6 +117,26 @@ app.get('/upload', function(req, res){
   });
 });
 
+app.post('/uploadRecipe',function(req, res){
+  data = req.body;
+  sess = req.session;
+  sess.userData.recipe = data;
+  res.redirect('/preview')
+});
+
+app.get('/preview', function(req, res){
+  sess = req.session;
+  if(!sess.userData.employeeid) {
+    res.redirect('/login');
+  }
+  res.render('preview', {
+    userName: sess.userData.firstName + ' '+ sess.userData.lastName,
+    userLocation: sess.userData.city,
+    userPosition: sess.userData.position
+  });
+  console.log(sess.userData);
+});
+
 function saveData(data, callback) {
   var id = JSON.stringify(data.employeeid);
   id = id.replace(/['"]+/g, '');
