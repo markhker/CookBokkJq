@@ -2,7 +2,7 @@ $(function() {
 
   var imageDishData, imageUserData;
 
-  $('.image-editor').cropit({
+  $('#portImage').cropit({
     exportZoom: 2,
     imageState: {
       src: 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/create/waiter.png',
@@ -12,16 +12,16 @@ $(function() {
   });
 
   $('#rotate2').click(function() {
-    $('.image-editor').cropit('rotateCW');
+    $('#portImage').cropit('rotateCW');
   });
 
   $('#rotate1').click(function() {
-    $('.image-editor').cropit('rotateCCW');
+    $('#portImage').cropit('rotateCCW');
   });
 
   $('#uploadMain').click(function(e) {
     e.preventDefault();
-    imageDishData = $('.image-editor').cropit('export', {type:'image/jpeg', quality:.9});
+    imageDishData = $('#portImage').cropit('export', {type:'image/jpeg', quality:.9});
     $.ajax({
       url: '/post-image',
       type: 'post',
@@ -36,12 +36,29 @@ $(function() {
     });
       return false;
   });
+  
+  $('#uploadMain').prop('disabled', true);
+  $('#uploadUser').prop('disabled', true);
+  
+   $('#uploadMain').click(function() {
+     $('#uploadMain').prop('disabled', true).addClass('disabled');
+   });
+  
+  $('#uploadUser').click(function() {
+     $('#uploadUser').prop('disabled', true).addClass('disabled');
+   });
 
   $('#plusOne').click(function() {
     $('#fileUploadMain').click();
+    $('#uploadMain').prop('disabled', false).removeClass('disabled');
+  });
+  
+  $('#plusUser').click(function() {
+    $('#fileUploadUser').click();
+    $('#uploadUser').prop('disabled', false).removeClass('disabled');
   });
 
-  $('.image-user').cropit({
+  $('#imageUser').cropit({
     exportZoom: 1.25,
     imageState: {
       src: 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/create/user.png',
@@ -51,16 +68,16 @@ $(function() {
   });
 
   $('#rotate4').click(function() {
-    $('.image-user').cropit('rotateCW');
+    $('#imageUser').cropit('rotateCW');
   });
 
   $('#rotate3').click(function() {
-    $('.image-user').cropit('rotateCCW');
+    $('#imageUser').cropit('rotateCCW');
   });
 
   $('#uploadUser').click(function(e) {
     e.preventDefault();
-    imageUserData = $('.image-user').cropit('export', {type:'image/jpeg', quality:.9});
+    imageUserData = $('#imageUser').cropit('export', {type:'image/jpeg', quality:.9});
     $.ajax({
       url: '/post-image-user',
       type: 'post',
@@ -74,9 +91,5 @@ $(function() {
       }
     });
       return false;
-  });
-
-  $('#plusUser').click(function() {
-    $('#fileUploadUser').click();
   });
 });

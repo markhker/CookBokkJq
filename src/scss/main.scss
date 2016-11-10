@@ -280,13 +280,13 @@ hr.styled {
 }
 
 .disabled {
-  background-color: $grey;
-  border-color: $grey;
-  cursor: default;
+  background-color: $grey !important;
+  border-color: $grey !important;
+  cursor: default !important;
 
   &:hover {
-    background-color: $grey;
-    border-color: $grey;
+    background-color: $grey !important;
+    border-color: $grey !important;
   }
 }
 
@@ -577,7 +577,7 @@ input.cropit-image-zoom-input {
 .headerImages {
   position: relative;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 }
 
 .dropzone {
@@ -796,7 +796,7 @@ input.cropit-image-zoom-input {
 
 .previewRecipe {
   flex-direction: column;
-  justify-content: space-between;;
+  justify-content: flex-start;
 
   .previewTitle {
     font-family: $impregnable;
@@ -847,6 +847,7 @@ input.cropit-image-zoom-input {
 
 .previewButtons {
   justify-content: space-around;
+  margin-top: 1.5rem;
 
   .pButton {
     color: $blue-3;

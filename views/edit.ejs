@@ -1,0 +1,529 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="es_MX"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="author" content="Mark Hkr">
+    <meta property="fb:admins" content="100002353510548">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://use.fontawesome.com/f4cee09130.js"></script>
+    <script src="dist/vendor/jquery-2.2.4.min.js"></script>
+    <script src="dist/vendor/jquery-cropit.min.js"></script>
+    <link rel="stylesheet" href="dist/css/main.css">
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="container-upload col1">
+      <div class="row loginHeader">
+        <img src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/create/start.png" alt="Logo" class="col2024 colm1424 coll1624 imgResponsive">
+      </div>
+
+      <div class="row col1 headerImages">
+        <form action="#" class="col1124 dropzone">
+          <div class="leftDropper col1">
+            <div class="image-editor col1">
+              <div class="cropit-preview" style="background-image:url('<%= dishImage %>')">
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <form action="#" class="col1224 dropzone" id="userImage">
+
+          <div class="rightDropper col1">
+            <div class="userData col1224">
+              <p id="userName"><%= userName %></p>
+              <p id="userLocation"><%= userLocation %></p>
+              <p id="userPosition"><%= userPosition %></p>
+            </div>
+
+            <div class="image-user col1224">
+              <div class="cropit-preview" style="background-image:url('<%= userImage %>')">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <form id="uploadRecipe" action="" class="col1 uploadForm">
+        <div class="formGroup coll1524">
+          <label for="recipeTitle" class="label">
+            Recipe title:
+          </label>
+          <input type="text" class="input" id="recipeTitle" name="recipeTitle" required value="<%= recipeTitle %>">
+        </div>
+
+        <div class="formGroup coll624">
+          <label for="recipeServings" class="label">
+            Servings:
+          </label>
+          <input type="text" class="input recipeServes" id="recipeServings" name="recipeServings" required value="<%= servings %>">
+        </div>
+
+        <div class="formGroup">
+          <label for="recipeCat" class="label">
+            Category:
+          </label>
+          <select class="input" id="recipeCat" name="recipeCat">
+              <option selected disabled>Choose category from drop down menu</option>
+              <option value="appetizer">Appetizers</option>
+              <option value="sss">Soups, salads and sides</option>
+              <option value="main">Main dishes</option>
+              <option value="desert">Desserts</option>
+            </select>
+        </div>
+
+        <h2 class="subtitleForm">Ingredients:</h2>
+
+        <div class="dividerForm col1" id="dividerForm">
+
+          <div class="divPartForm coll1024">
+            <div class="formGroup lister" id="ingredients">
+              <label for="setIngredient_1" class="label ing">
+                Ingredients:
+              </label>
+              <div class="setOfIngredients">
+                <input type="text" class="input" id="setIngredient_1" name="setIngredient_1" required value="<%= setIng1 %>">
+              </div>
+            </div>
+            <div class="formGroup lister" id="ingredients">
+              <label for="recipeIngredient_1" class="label">
+                List:
+              </label>
+              <div class="listOfIngredients" id="loi-1">
+                
+                <% if (typeof(recipeIng1) == 'object') { %>
+                 <% for(var i=0; i<recipeIng1.length; i++) { %>
+                 <input type="text" class="input" id="recipeIngredient_1>" name="recipeIngredient_1>" required value="<%= recipeIng1[i] %>">
+                 <% } %>
+                <% } else if (typeof(recipeIng1) == 'string') { %>
+                  <input type="text" class="input" id="recipeIngredient_1" name="recipeIngredient_1" required value="<%= recipeIng1 %>">
+                <% } %>
+                
+              </div>
+              <p><a href="#!" class="addIngredient" id="addIng-1">+Add ingredient</a></p>
+            </div>
+          </div>
+          
+          <% if(setIng2) { %>
+
+          <div class="divPartForm coll1024">
+            <div class="formGroup lister" id="ingredients">
+              <label for="setIngredient_2" class="label ing">
+                2<sup>nd</sup> set of Ingredients:
+              </label>
+              <div class="setOfIngredients">
+                <input type="text" class="input" id="setIngredient_2" name="setIngredient_2" value="<%= setIng2 %>">
+              </div>
+            </div>
+            <div class="formGroup lister" id="ingredients">
+              <label for="recipeIngredient_2" class="label">
+                List:
+              </label>
+              <div class="listOfIngredients" id="loi-2">
+                
+                <% if (typeof(recipeIng2) == 'object') { %>
+                 <% for(var i=0; i<recipeIng2.length; i++) { %>
+                 <input type="text" class="input" id="recipeIngredient_2>" name="recipeIngredient_2>" required value="<%= recipeIng2[i] %>">
+                 <% } %>
+                <% } else if (typeof(recipeIng2) == 'string') { %>
+                  <input type="text" class="input" id="recipeIngredient_2" name="recipeIngredient_2" required value="<%= recipeIng2 %>">
+                <% } %>
+                
+              </div>
+              <p><a href="#!" class="addIngredient" id="addIng-2">+Add ingredient</a></p>
+            </div>
+          </div>
+          
+          <% } %>
+          
+          <% if(setIng3) { %>
+
+          <div class="divPartForm coll1024">
+            <div class="formGroup lister" id="ingredients">
+              <label for="setIngredient_3" class="label ing">
+                3<sup>rd</sup> set of Ingredients:
+              </label>
+              <div class="setOfIngredients">
+                <input type="text" class="input" id="setIngredient_3" name="setIngredient_3" value="<%= setIng3 %>">
+              </div>
+            </div>
+            <div class="formGroup lister" id="ingredients">
+              <label for="recipeIngredient_3" class="label">
+                List:
+              </label>
+              <div class="listOfIngredients" id="loi-3">
+                
+                <% if (typeof(recipeIng3) == 'object') { %>
+                 <% for(var i=0; i<recipeIng3.length; i++) { %>
+                 <input type="text" class="input" id="recipeIngredient_3>" name="recipeIngredient_3>" required value="<%= recipeIng3[i] %>">
+                 <% } %>
+                <% } else if (typeof(recipeIng3) == 'string') { %>
+                  <input type="text" class="input" id="recipeIngredient_3" name="recipeIngredient_3" required value="<%= recipeIng3 %>">
+                <% } %>
+                
+              </div>
+              <p><a href="#!" class="addIngredient" id="addIng-3">+Add ingredient</a></p>
+            </div>
+          </div>
+          
+          <% } %>
+          
+          <% if(setIng4) { %>
+
+          <div class="divPartForm coll1024">
+            <div class="formGroup lister" id="ingredients">
+              <label for="setIngredient_4" class="label ing">
+                4<sup>th</sup> set of Ingredients:
+              </label>
+              <div class="setOfIngredients">
+                <input type="text" class="input" id="setIngredient_4" name="setIngredient_4" value="<%= setIng4 %>">
+              </div>
+            </div>
+            <div class="formGroup lister" id="ingredients">
+              <label for="recipeIngredient_4" class="label">
+                List:
+              </label>
+              <div class="listOfIngredients" id="loi-4">
+                
+                <% if (typeof(recipeIng4) == 'object') { %>
+                 <% for(var i=0; i<recipeIng4.length; i++) { %>
+                 <input type="text" class="input" id="recipeIngredient_4>" name="recipeIngredient_4>" required value="<%= recipeIng4[i] %>">
+                 <% } %>
+                <% } else if (typeof(recipeIng4) == 'string') { %>
+                  <input type="text" class="input" id="recipeIngredient_4" name="recipeIngredient_4" required value="<%= recipeIng4 %>">
+                <% } %>
+                
+              </div>
+              <p><a href="#!" class="addIngredient" id="addIng-4">+Add ingredient</a></p>
+            </div>
+          </div>
+          
+          <% } %>
+          
+          <% if(setIng5) { %>
+
+          <div class="divPartForm coll1024">
+            <div class="formGroup lister" id="ingredients">
+              <label for="setIngredient_5" class="label ing">
+                5<sup>th</sup> set of Ingredients:
+              </label>
+              <div class="setOfIngredients">
+                <input type="text" class="input" id="setIngredient_5" name="setIngredient_5" value="<%= setIng5 %>">
+              </div>
+            </div>
+            <div class="formGroup lister" id="ingredients">
+              <label for="recipeIngredient_5" class="label">
+                List:
+              </label>
+              <div class="listOfIngredients" id="loi-5">
+                
+                <% if (typeof(recipeIng5) == 'object') { %>
+                 <% for(var i=0; i<recipeIng5.length; i++) { %>
+                 <input type="text" class="input" id="recipeIngredient_5>" name="recipeIngredient_5>" required value="<%= recipeIng5[i] %>">
+                 <% } %>
+                <% } else if (typeof(recipeIng5) == 'string') { %>
+                  <input type="text" class="input" id="recipeIngredient_5" name="recipeIngredient_5" required value="<%= recipeIng5 %>">
+                <% } %>
+                
+              </div>
+              <p><a href="#!" class="addIngredient" id="addIng-5">+Add ingredient</a></p>
+            </div>
+          </div>
+          
+          <% } %>
+
+        </div>
+
+        <div class="divPartForm coll1024">
+          <a href="#!" class="addSetIngredients" id="addSetIng">+ Add another set of ingredients</a>
+        </div>
+
+        <h2 class="subtitleForm">Instructions:</h2>
+
+        <div id="instructionsSets">
+          <div class="formGroup lister">
+            <label for="recipeMethod_1" class="label ing">
+              Instructions:
+            </label>
+            <div class="instructions">
+              <input type="text" class="input" id="recipeMethod_1" name="recipeMethod_1" required value="<%= meth1 %>">
+            </div>
+          </div>
+
+          <h3 class="steps">Steps:</h3>
+
+          <div class="formGroup lister itemStep" id="los-1">
+                
+                <% if (typeof(recipeMeth1) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth1.length; i++) { %>
+                  
+                  <div class="wrapSteps">
+                    <label for="recipeStep_1" class="label ing">
+                      <%=i+1%>.
+                    </label>
+                    <div class="listOfSteps">
+
+                      <input type="text" class="input" id="recipeStep_1" name="recipeStep_1" required value="<%= recipeMeth1[i] %>">
+
+                    </div>
+                  </div>
+                 <% } %>
+                <% } else if (typeof(recipeMeth1) == 'string') { %>
+                  <div class="wrapSteps">
+                    <label for="recipeStep_1" class="label ing">
+                      1.
+                    </label>
+                    <div class="listOfSteps">
+
+                      <input type="text" class="input" id="recipeStep_1" name="recipeStep_1" required value="<%= recipeMeth1 %>">
+
+                    </div>
+                  </div>
+                <% } %>
+                
+          </div>
+
+          <p><a href="#!" class="addStep" id="addStep-1">+Add step</a></p>
+          
+          <% if(meth2) { %>
+
+          <div class="formGroup lister">
+            <label for="recipeMethod_2" class="label ing">
+              Instructions for Set 2:
+            </label>
+            <div class="instructions">
+              <input type="text" class="input" id="recipeMethod_2" name="recipeMethod_2" value="<%= meth2 %>">
+            </div>
+          </div>
+
+          <h3 class="steps">Steps:</h3>
+
+          <div class="formGroup lister itemStep" id="los-2">
+            
+            <% if (typeof(recipeMeth2) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth2.length; i++) { %>
+                  
+                  <div class="wrapSteps">
+                    <label for="recipeStep_2" class="label ing">
+                      <%=i+1%>.
+                    </label>
+                    <div class="listOfSteps">
+
+                      <input type="text" class="input" id="recipeStep_2" name="recipeStep_2" required value="<%= recipeMeth2[i] %>">
+
+                    </div>
+                  </div>
+                 <% } %>
+                <% } else if (typeof(recipeMeth2) == 'string') { %>
+                  <div class="wrapSteps">
+                    <label for="recipeStep_2" class="label ing">
+                      1.
+                    </label>
+                    <div class="listOfSteps">
+
+                      <input type="text" class="input" id="recipeStep_2" name="recipeStep_2" required value="<%= recipeMeth2 %>">
+
+                    </div>
+                  </div>
+                <% } %>
+              
+              </div>
+
+            <p><a href="#!" class="addStep" id="addStep-2">+Add step</a></p>
+          <% } %>
+                
+          <% if(meth3) { %>
+
+          <div class="formGroup lister">
+            <label for="recipeMethod_3" class="label ing">
+              Instructions for Set 3:
+            </label>
+            <div class="instructions">
+              <input type="text" class="input" id="recipeMethod_3" name="recipeMethod_3" value="<%= meth3 %>">
+            </div>
+          </div>
+
+          <h3 class="steps">Steps:</h3>
+
+          <div class="formGroup lister itemStep" id="los-3">
+            
+            <% if (typeof(recipeMeth3) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth3.length; i++) { %>
+                  
+                  <div class="wrapSteps">
+                    <label for="recipeStep_3" class="label ing">
+                      <%=i+1%>.
+                    </label>
+                    <div class="listOfSteps">
+
+                      <input type="text" class="input" id="recipeStep_3" name="recipeStep_3" required value="<%= recipeMeth3[i] %>">
+
+                    </div>
+                  </div>
+                 <% } %>
+                <% } else if (typeof(recipeMeth3) == 'string') { %>
+                  <div class="wrapSteps">
+                    <label for="recipeStep_3" class="label ing">
+                      1.
+                    </label>
+                    <div class="listOfSteps">
+
+                      <input type="text" class="input" id="recipeStep_3" name="recipeStep_3" required value="<%= recipeMeth3 %>">
+
+                    </div>
+                  </div>
+                <% } %>
+            
+          </div>
+
+          <p><a href="#!" class="addStep" id="addStep-3">+Add step</a></p>
+          
+          <% } %>
+          
+          <% if(meth4) { %>
+
+          <div class="formGroup lister">
+            <label for="recipeMethod_4" class="label ing">
+              Instructions for Set 4:
+            </label>
+            <div class="instructions">
+              <input type="text" class="input" id="recipeMethod_4" name="recipeMethod_4" value="<%= meth4 %>">
+            </div>
+          </div>
+
+          <h3 class="steps">Steps:</h3>
+
+          <div class="formGroup lister itemStep" id="los-4">
+            
+            <% if (typeof(recipeMeth4) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth4.length; i++) { %>
+                  
+                  <div class="wrapSteps">
+                    <label for="recipeStep_4" class="label ing">
+                      <%=i+1%>.
+                    </label>
+                    <div class="listOfSteps">
+
+                      <input type="text" class="input" id="recipeStep_4" name="recipeStep_4" required value="<%= recipeMeth4[i] %>">
+
+                    </div>
+                  </div>
+                 <% } %>
+                <% } else if (typeof(recipeMeth4) == 'string') { %>
+                  <div class="wrapSteps">
+                    <label for="recipeStep_4" class="label ing">
+                      1.
+                    </label>
+                    <div class="listOfSteps">
+
+                      <input type="text" class="input" id="recipeStep_4" name="recipeStep_4" required value="<%= recipeMeth4 %>">
+
+                    </div>
+                  </div>
+                <% } %>
+              
+              </div>
+
+            <p><a href="#!" class="addStep" id="addStep-4">+Add step</a></p>
+          <% } %>
+          
+          <% if(meth5) { %>
+
+          <div class="formGroup lister">
+            <label for="recipeMethod_5" class="label ing">
+              Instructions for Set 5:
+            </label>
+            <div class="instructions">
+              <input type="text" class="input" id="recipeMethod_5" name="recipeMethod_5" value="<%= meth5 %>">
+            </div>
+          </div>
+
+          <h3 class="steps">Steps:</h3>
+
+          <div class="formGroup lister itemStep" id="los-5">
+            
+            <% if (typeof(recipeMeth5) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth5.length; i++) { %>
+                  
+                  <div class="wrapSteps">
+                    <label for="recipeStep_5" class="label ing">
+                      <%=i+1%>.
+                    </label>
+                    <div class="listOfSteps">
+
+                      <input type="text" class="input" id="recipeStep_5" name="recipeStep_5" required value="<%= recipeMeth5[i] %>">
+
+                    </div>
+                  </div>
+                 <% } %>
+                <% } else if (typeof(recipeMeth5) == 'string') { %>
+                  <div class="wrapSteps">
+                    <label for="recipeStep_5" class="label ing">
+                      1.
+                    </label>
+                    <div class="listOfSteps">
+
+                      <input type="text" class="input" id="recipeStep_5" name="recipeStep_5" required value="<%= recipeMeth5 %>">
+
+                    </div>
+                  </div>
+                <% } %>
+              
+              </div>
+
+            <p><a href="#!" class="addStep" id="addStep-5">+Add step</a></p>
+          <% } %>
+          
+        </div>
+
+        <div class="divPartForm coll1024">
+          <a href="#!" class="addSetSteps" id="addSetSteps">+ Add another set of instructions</a>
+        </div>
+
+         <h2 class="subtitleForm">About your recipe:</h2>
+
+        <div class="formGroup">
+          <label for="recipeStory" class="label">
+            Share a little bit of the story of your recipe:
+          </label>
+          <textarea class="input" id="recipeStory" name="recipeStory" maxlength="500" rows="5" required><%=recipeStory%></textarea>
+        </div>
+
+        <hr class="styled">
+
+        <div class="formGroup buttonGroup">
+          <button class="col1 colm1024 btn buttonP" type="submit">
+            Preview your recipe
+          </button>
+        </div>
+        
+        <input type="hidden" value="<%=dishImage%>" id="dishImage" name="dishImage">
+        
+        <input type="hidden" value="<%=userImage%>" id="userImage" name="userImage">
+
+      </form>
+
+
+      <footer class="row mainFooter">
+        <div class="col824 colm624 coll324">
+          <a href="index.html"><img src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/logo-taste.png" alt="Taste logo" class="imgResponsive"></a>
+        </div>
+      </footer>
+    </div>
+    <!-- /container -->
+
+    <!--script src="dist/vendor/dropzone.js"></script-->
+    <script src="src/js/uploadForm.js"></script>
+    <script src="src/js/main.js"></script>
+  </body>
+</html>

@@ -61,18 +61,30 @@
             <div class="piLeft col1124">
               <p class="piTitleIng"><%= setIng1 %></p>
               <ul class="piList">
-               <% for(var i=0; i<recipeIng1.length; i++) { %>
-                <li><%= recipeIng1[0] %></li>
-               <% } %>
+              
+                <% if (typeof(recipeIng1) == 'object') { %>
+                 <% for(var i=0; i<recipeIng1.length; i++) { %>
+                  <li><%= recipeIng1[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeIng1) == 'string') { %>
+                  <li><%= recipeIng1 %></li>
+                <% } %>
+               
               </ul>
               
               <% if(setIng2) { %>
 
               <p class="piTitleIng"><%= setIng2 %></p>
               <ul class="piList">
-                <% for(var i=0; i<recipeIng2.length; i++) { %>
-                <li><%= recipeIng2[i] %></li>
-               <% } %>
+               
+                <% if (typeof(recipeIng2) == 'object') { %>
+                 <% for(var i=0; i<recipeIng2.length; i++) { %>
+                  <li><%= recipeIng2[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeIng2) == 'string') { %>
+                  <li><%= recipeIng2 %></li>
+                <% } %>
+                
               </ul>
               <% } %>
             </div>
@@ -82,9 +94,15 @@
 
               <p class="piTitleIng"><%= setIng3 %></p>
               <ul class="piList">
-                <% for(var i=0; i<recipeIng3.length; i++) { %>
-                <li><%= recipeIng3[i] %></li>
-               <% } %>
+               
+                <% if (typeof(recipeIng3) == 'object') { %>
+                 <% for(var i=0; i<recipeIng3.length; i++) { %>
+                  <li><%= recipeIng3[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeIng3) == 'string') { %>
+                  <li><%= recipeIng3 %></li>
+                <% } %>
+                
               </ul>
               <% } %>
               
@@ -92,9 +110,15 @@
 
               <p class="piTitleIng"><%= setIng4 %></p>
               <ul class="piList">
-                <% for(var i=0; i<recipeIng4.length; i++) { %>
-                <li><%= recipeIng4[i] %></li>
-               <% } %>
+               
+                <% if (typeof(recipeIng4) == 'object') { %>
+                 <% for(var i=0; i<recipeIng4.length; i++) { %>
+                  <li><%= recipeIng4[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeIng4) == 'string') { %>
+                  <li><%= recipeIng4 %></li>
+                <% } %>
+                
               </ul>
               <% } %>
               
@@ -102,9 +126,15 @@
 
               <p class="piTitleIng"><%= setIng5 %></p>
               <ul class="piList">
-                <% for(var i=0; i<recipeIng5.length; i++) { %>
-                <li><%= recipeIng5[i] %></li>
-               <% } %>
+               
+                <% if (typeof(recipeIng5) == 'object') { %>
+                 <% for(var i=0; i<recipeIng5.length; i++) { %>
+                  <li><%= recipeIng5[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeIng5) == 'string') { %>
+                  <li><%= recipeIng5 %></li>
+                <% } %>
+                
               </ul>
               <% } %>
             </div>
@@ -116,18 +146,30 @@
             <div class="piLeft col1124">
               <p class="piTitleIng"><%= meth1 %></p>
               <ul class="piList">
-               <% for(var i=0; i<recipeMeth1.length; i++) { %>
-                <li><%= recipeMeth1[i] %></li>
-               <% } %>
+              
+                <% if (typeof(recipeMeth1) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth1.length; i++) { %>
+                  <li><%= recipeMeth1[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeMeth1) == 'string') { %>
+                  <li><%= recipeMeth1 %></li>
+                <% } %>
+                
               </ul>
               
               <% if(meth2) { %>
 
               <p class="piTitleIng"><%= meth2 %></p>
               <ul class="piList">
-                <% for(var i=0; i<recipeMeth2.length; i++) { %>
-                <li><%= recipeMeth2[i] %></li>
-               <% } %>
+               
+                <% if (typeof(recipeMeth2) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth2.length; i++) { %>
+                  <li><%= recipeMeth2[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeMeth2) == 'string') { %>
+                  <li><%= recipeMeth2 %></li>
+                <% } %>
+                
               </ul>
               <% } %>
             </div>
@@ -137,9 +179,15 @@
 
               <p class="piTitleIng"><%= meth3 %></p>
               <ul class="piList">
-                <% for(var i=0; i<recipeMeth3.length; i++) { %>
-                <li><%= recipeMeth3[i] %></li>
-               <% } %>
+               
+                <% if (typeof(recipeMeth3) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth3.length; i++) { %>
+                  <li><%= recipeMeth3[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeMeth3) == 'string') { %>
+                  <li><%= recipeMeth3 %></li>
+                <% } %>
+                
               </ul>
               <% } %>
               
@@ -147,9 +195,15 @@
 
               <p class="piTitleIng"><%= meth4 %></p>
               <ul class="piList">
-                <% for(var i=0; i<recipeMeth4.length; i++) { %>
-                <li><%= recipeMeth4[i] %></li>
-               <% } %>
+               
+                <% if (typeof(recipeMeth4) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth4.length; i++) { %>
+                  <li><%= recipeMeth4[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeMeth4) == 'string') { %>
+                  <li><%= recipeMeth4 %></li>
+                <% } %>
+                
               </ul>
               <% } %>
               
@@ -157,9 +211,15 @@
 
               <p class="piTitleIng"><%= meth5 %></p>
               <ul class="piList">
-                <% for(var i=0; i<recipeMeth5.length; i++) { %>
-                <li><%= recipeMeth5[i] %></li>
-               <% } %>
+               
+                <% if (typeof(recipeMeth5) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth5.length; i++) { %>
+                  <li><%= recipeMeth5[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeMeth5) == 'string') { %>
+                  <li><%= recipeMeth5 %></li>
+                <% } %>
+                
               </ul>
               <% } %>
             </div>
@@ -168,7 +228,7 @@
           <div id="previewAbout" class="col1 previewer">
             <h2 class="piTitle col1">About the recipe</h2>
 
-            <div class="piLeft col1124">
+            <div class="piLeft col2224">
               <p class="piTitleIng"><%= recipeStory %></p>
             </div>
           </div>
@@ -185,8 +245,8 @@
       <hr class="styled">
 
       <div class="previewReviewButtons col1">
-        <a href="#" class="btn prbSubmit">Submit to approve</a>
-        <a href="#" class="btn prbEdit">Edit before send</a>
+        <a id="mainSender" href="#" class="btn prbSubmit">Submit recipe</a>
+        <a id="editSender" href="#" class="btn prbEdit">Edit before send</a>
       </div>
 
 

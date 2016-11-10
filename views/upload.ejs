@@ -28,13 +28,13 @@
       </div>
 
       <div class="row col1 headerImages">
-        <form action="#" class="col1124 dropzone" id="portImage">
+        <form action="#" class="col1124 dropzone">
           <div class="leftDropper col1">
-            <div class="image-editor col1">
+            <div class="image-editor col1" id="portImage">
               <div class="cropit-preview">
                 <div class="select-image-btn" id="plusOne"> + </div>
               </div>
-              <input type="file" class="cropit-image-input" accept="image/*" id="fileUploadMain">
+              <input type="file" class="cropit-image-input" accept="image/*" id="fileUploadMain" required>
 
               <div class="btn-wrap col1">
                 <div class="rotate-btns">
@@ -49,7 +49,7 @@
                 </div>
               </div>
 
-              <button class="export btn buttonUP" id="uploadMain">Upload Dish Image</button>
+              <button class="export btn buttonUP disabled" id="uploadMain">Upload Dish Image</button>
             </div>
           </div>
         </form>
@@ -73,11 +73,11 @@
               <p id="userPosition"><%= userPosition %></p>
             </div>
 
-            <div class="image-user col1224">
+            <div class="image-user col1224" id="imageUser">
               <div class="cropit-preview">
                 <div class="select-image-btn" id="plusUser"> + </div>
               </div>
-              <input type="file" class="cropit-image-input" accept="image/*" id="fileUploadUser">
+              <input type="file" class="cropit-image-input" accept="image/*" id="fileUploadUser" required>
 
               <div class="btn-wrap col1">
                 <div class="rotate-btns">
@@ -92,7 +92,7 @@
                 </div>
               </div>
 
-              <button class="export btn buttonUP" id="uploadUser">Upload User Image</button>
+              <button class="export btn buttonUP disabled" id="uploadUser">Upload User Image</button>
             </div>
           </div>
         </form>
@@ -103,14 +103,14 @@
           <label for="recipeTitle" class="label">
             Recipe title:
           </label>
-          <input type="text" class="input" id="recipeTitle" name="recipeTitle" placeholder="Super awesome recipe...">
+          <input type="text" class="input" id="recipeTitle" name="recipeTitle" placeholder="Super awesome recipe..." required>
         </div>
 
         <div class="formGroup coll624">
           <label for="recipeServings" class="label">
             Servings:
           </label>
-          <input type="text" class="input recipeServes" id="recipeServings" name="recipeServings">
+          <input type="text" class="input recipeServes" id="recipeServings" name="recipeServings" required>
         </div>
 
         <div class="formGroup">
@@ -118,10 +118,11 @@
             Category:
           </label>
           <select class="input" id="recipeCat" name="recipeCat">
+              <option selected disabled>Choose category from drop down menu</option>
               <option value="appetizer">Appetizers</option>
               <option value="sss">Soups, salads and sides</option>
               <option value="main">Main dishes</option>
-              <option value="desert">Deserts</option>
+              <option value="desert">Desserts</option>
             </select>
         </div>
 
@@ -135,7 +136,7 @@
                 Ingredients:
               </label>
               <div class="setOfIngredients">
-                <input type="text" class="input" id="setIngredient_1" name="setIngredient_1" placeholder="Example: Cake">
+                <input type="text" class="input" id="setIngredient_1" name="setIngredient_1" placeholder="Example: Cake" required>
               </div>
             </div>
             <div class="formGroup lister" id="ingredients">
@@ -143,7 +144,7 @@
                 List:
               </label>
               <div class="listOfIngredients" id="loi-1">
-                <input type="text" class="input" id="recipeIngredient_1" name="recipeIngredient_1" placeholder="Example: 1 cup of flour">
+                <input type="text" class="input" id="recipeIngredient_1" name="recipeIngredient_1" placeholder="Example: 1 cup of flour" required>
               </div>
               <p><a href="#!" class="addIngredient" id="addIng-1">+Add ingredient</a></p>
             </div>
@@ -152,7 +153,7 @@
           <div class="divPartForm coll1024">
             <div class="formGroup lister" id="ingredients">
               <label for="setIngredient_2" class="label ing">
-                Set 2 for Ingredients: <br><span>(If not necesary leave blank)</span>
+                2<sup>nd</sup> set of Ingredients: <br><span>(If not necesary leave blank)</span>
               </label>
               <div class="setOfIngredients">
                 <input type="text" class="input" id="setIngredient_2" name="setIngredient_2" placeholder="Example: Icing">
@@ -183,7 +184,7 @@
               Instructions:
             </label>
             <div class="instructions">
-              <input type="text" class="input" id="recipeMethod_1" name="recipeMethod_1" placeholder="Example: Cake">
+              <input type="text" class="input" id="recipeMethod_1" name="recipeMethod_1" placeholder="Example: Cake" required>
             </div>
           </div>
 
@@ -191,11 +192,11 @@
 
           <div class="formGroup lister itemStep" id="los-1">
             <div class="wrapSteps">
-              <label for="recipeSteps_1" class="label ing">
+              <label for="recipeStep_1" class="label ing">
                 1.
               </label>
               <div class="listOfSteps">
-                <input type="text" class="input" id="recipeStep_1" name="recipeStep_1" placeholder="Example: Mix the ingredients...">
+                <input type="text" class="input" id="recipeStep_1" name="recipeStep_1" placeholder="Example: Mix the ingredients..." required>
               </div>
             </div>
           </div>
@@ -215,7 +216,7 @@
 
           <div class="formGroup lister itemStep" id="los-2">
             <div class="wrapSteps">
-              <label for="recipeSteps_2" class="label ing">
+              <label for="recipeStep_2" class="label ing">
                 1.
               </label>
               <div class="listOfSteps">
@@ -237,7 +238,7 @@
           <label for="recipeStory" class="label">
             Share a little bit of the story of your recipe:
           </label>
-          <textarea class="input" id="recipeStory" name="recipeStory" placeholder="You have a 250 characters limit." maxlength="250" rows="5"></textarea>
+          <textarea class="input" id="recipeStory" name="recipeStory" placeholder="You have a 500 characters limit." maxlength="500" rows="5" required></textarea>
         </div>
 
         <hr class="styled">
