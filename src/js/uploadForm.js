@@ -2,15 +2,6 @@ $(function() {
 
   var imageDishData, imageUserData;
 
-  $('#portImage').cropit({
-    exportZoom: 2,
-    imageState: {
-      src: 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/create/waiter.png',
-    },
-    type: 'image/jpeg',
-    quality: .9
-  });
-
   $('#rotate2').click(function() {
     $('#portImage').cropit('rotateCW');
   });
@@ -56,15 +47,6 @@ $(function() {
   $('#plusUser').click(function() {
     $('#fileUploadUser').click();
     $('#uploadUser').prop('disabled', false).removeClass('disabled');
-  });
-
-  $('#imageUser').cropit({
-    exportZoom: 1.25,
-    imageState: {
-      src: 'https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-524253160393/images/create/user.png',
-    },
-    type: 'image/jpeg',
-    quality: .9
   });
 
   $('#rotate4').click(function() {

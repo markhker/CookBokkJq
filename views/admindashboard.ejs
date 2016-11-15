@@ -30,41 +30,14 @@
       <div class="row col1 headerImages">
         <form action="#" class="col1124 dropzone">
           <div class="leftDropper col1">
-            <div class="image-editor col1" id="portImage">
-              <div class="cropit-preview">
-                <div class="select-image-btn" id="plusOne"> + </div>
+            <div class="image-editor col1">
+              <div class="cropit-preview" style="background-image:url('<%= dishImage %>')">
               </div>
-              <input type="file" class="cropit-image-input" accept="image/*" id="fileUploadMain" required>
-
-              <div class="btn-wrap col1">
-                <div class="rotate-btns">
-                  <span class="rotate-ccw" id="rotate1"><i class="fa fa-undo" aria-hidden="true"></i></span>
-                  <span class="rotate-cw" id="rotate2"><i class="fa fa-repeat" aria-hidden="true"></i></span>
-                </div>
-
-                <div class="slider-wrap">
-                  <span><i class="fa fa-picture-o pict-sm" aria-hidden="true"></i></span>
-                  <input type="range" class="cropit-image-zoom-input">
-                  <span><i class="fa fa-picture-o pict-lg" aria-hidden="true"></i></span>
-                </div>
-              </div>
-
-              <button class="export btn buttonUP disabled" id="uploadMain">Upload Dish Image</button>
             </div>
           </div>
         </form>
 
         <form action="#" class="col1224 dropzone" id="userImage">
-          <div class="userText">
-            <p class="userTitle">
-              Take your pictures using your mobile phone in the vertical position for a better fit in the cookbook.
-            </p>
-            <ul class="userInst">
-              <li>Resolution: 800 x 1000 pixels, vertical.</li>
-              <li>Size max: 5MB</li>
-              <li>Format: jpg, png</li>
-            </ul>
-          </div>
 
           <div class="rightDropper col1">
             <div class="userData col1224">
@@ -73,26 +46,9 @@
               <p id="userPosition"><%= userPosition %></p>
             </div>
 
-            <div class="image-user col1224" id="imageUser">
-              <div class="cropit-preview">
-                <div class="select-image-btn" id="plusUser"> + </div>
+            <div class="image-user col1224">
+              <div class="cropit-preview" style="background-image:url('<%= userImage %>')">
               </div>
-              <input type="file" class="cropit-image-input" accept="image/*" id="fileUploadUser" required>
-
-              <div class="btn-wrap col1">
-                <div class="rotate-btns">
-                  <span class="rotate-ccw" id="rotate3"><i class="fa fa-undo" aria-hidden="true"></i></span>
-                  <span class="rotate-cw" id="rotate4"><i class="fa fa-repeat" aria-hidden="true"></i></span>
-                </div>
-
-                <div class="slider-wrap">
-                  <span><i class="fa fa-picture-o pict-sm" aria-hidden="true"></i></span>
-                  <input type="range" class="cropit-image-zoom-input">
-                  <span><i class="fa fa-picture-o pict-lg" aria-hidden="true"></i></span>
-                </div>
-              </div>
-
-              <button class="export btn buttonUP disabled" id="uploadUser">Upload User Image</button>
             </div>
           </div>
         </form>
@@ -552,8 +508,8 @@
         </div>
         
         <input type="hidden" value="<%=dishImage%>" id="dishImage" name="dishImage">
+        
         <input type="hidden" value="<%=userImage%>" id="userImage" name="userImage">
-        <input type="hidden" name="approval" id="approval" value="0">
 
       </form>
 
@@ -566,25 +522,7 @@
     </div>
     <!-- /container -->
 
-    <script>
-      $('#portImage').cropit({
-        exportZoom: 2,
-        imageState: {
-          src: '<%=dishImage%>',
-        },
-        type: 'image/jpeg',
-        quality: .9
-      });
-      
-      $('#imageUser').cropit({
-        exportZoom: 1.25,
-        imageState: {
-          src: '<%=userImage%>',
-        },
-        type: 'image/jpeg',
-        quality: .9
-      });
-    </script>
+    <!--script src="dist/vendor/dropzone.js"></script-->
     <script src="src/js/uploadForm.js"></script>
     <script src="src/js/main.js"></script>
   </body>
