@@ -87,70 +87,45 @@ app.get('/', function(req, res){
 
 /* ADMIN DASHBOARD*/
 app.get('/admin', function(req, res){
-  var data = {
+  var params = {
     Delimiter: '',
-    Prefix: 'cookdata'
+    Prefix: 'cookdata',
+    MaxKeys: 1000,
   };
-  s3Bucket.listObjects(data, function(err, data){
+  s3Bucket.listObjectsV2(params, function(err, data){
     if (err) {
       console.log(err, err.stack);
     } else {
-      lister = data;
-      for (var i = 0; i < Object.keys(lister).length; i++) {
-          keys[i] = lister.Contents[i].Key;
+      for (var i = 0; i < data.KeyCount; i++) {
+          keys[i] = data.Contents[i].Key;
       };
       console.log(keys);
       
       for (var j = 0; j < keys.length; j++) {
         (function(j){
-          s3Bucket.getObject({Key: keys[j]}, function(err, data){
-            if (err) {
-              console.log(err, err.stack);
-            } else {
-              var retrieve = JSON.parse(data.Body.toString('utf-8'));
+          s3Bucket.getObject({Key: keys[j]}).
+          on('error', function(response) {
+            console.log(err, err.stack);
+          }).
+          on('complete', function(response) {
+            var retrieve = JSON.parse(response.data.Body.toString('utf-8'));
               var jsoning = JSON.stringify(retrieve);
-              objectData[j] = jsoning;
-            }
-          });
-        })(j); // anonymous function to create scopes for loop
+              objectData.push(retrieve);
+              
+          }).send();
+        })(j);
       };
-      
-      console.log(objectData[4]);
     };
   });
   
+  setTimeout(function(){ 
+    console.log(objectData[0]);
+    res.render('admindashboard', {
+      data: objectData
+    });
   
+  }, 5000);
   
-  res.render('admindashboard', {
-    userName: objectData[0].firstName + ' '+ objectData[0].lastName,
-    userLocation: objectData[0].city,
-    userPosition: objectData[0].position,
-    dishImage: objectData[0].dishImage,
-    userImage: objectData[0].userImage,
-    recipeTitle: objectData[0].recipe.recipeTitle,
-    servings: objectData[0].recipe.recipeServings,
-    setIng1: objectData[0].recipe.setIngredient_1,
-    recipeIng1: objectData[0].recipe.recipeIngredient_1,
-    setIng2: objectData[0].recipe.setIngredient_2,
-    recipeIng2: objectData[0].recipe.recipeIngredient_2,
-    setIng3: objectData[0].recipe.setIngredient_3,
-    recipeIng3: objectData[0].recipe.recipeIngredient_3,
-    setIng4: objectData[0].recipe.setIngredient_4,
-    recipeIng4: objectData[0].recipe.recipeIngredient_4,
-    setIng5: objectData[0].recipe.setIngredient_5,
-    recipeIng5: objectData[0].recipe.recipeIngredient_5,
-    meth1: objectData[0].recipe.recipeMethod_1,
-    recipeMeth1: objectData[0].recipe.recipeStep_1,
-    meth2: objectData[0].recipe.recipeMethod_2,
-    recipeMeth2: objectData[0].recipe.recipeStep_2,
-    meth3: objectData[0].recipe.recipeMethod_3,
-    recipeMeth3: objectData[0].recipe.recipeStep_3,
-    meth4: objectData[0].recipe.recipeMethod_4,
-    recipeMeth4: objectData[0].recipe.recipeStep_4,
-    meth5: objectData[0].recipe.recipeMethod_5,
-    recipeMeth5: objectData[0].recipe.recipeStep_5,
-    recipeStory: objectData[0].recipe.recipeStory,
-  });
 });
 /* END ADMIN DASHBOARD*/
 
