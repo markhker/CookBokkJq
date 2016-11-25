@@ -1,0 +1,264 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="es_MX"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="author" content="Mark Hkr">
+    <meta property="fb:admins" content="100002353510548">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://use.fontawesome.com/f4cee09130.js"></script>
+    <script src="dist/vendor/jquery-2.2.4.min.js"></script>
+    <script src="dist/vendor/jquery-cropit.min.js"></script>
+    <link rel="stylesheet" href="dist/css/main.css">
+  </head>
+  <body>
+    <!--[if lt IE 8]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div class="containerPreview col1">
+      <div class="row loginHeader">
+        <img src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-513199747384/images/preview/preview.png" alt="Logo" class="col2024 colm1024 coll824 imgResponsive">
+      </div>
+
+      <div class="col1 previewContent">
+        <div class="previewImagery coll1124" style="background-image:url('<%= dishImage %>')">
+          <div class="previewPerson">
+            <div class="previewData">
+              <p class="previewName">
+                <%= userName %>
+              </p>
+              <p class="previewLocation">
+                <%= userLocation %>
+              </p>
+              <p class="previewPosition">
+                <%= userPosition %>
+              </p>
+            </div>
+            <img src="<%= userImage %>" alt="" class="previewUserPic">
+          </div>
+        </div>
+
+        <div class="previewRecipe coll1224">
+          <h1 class="previewTitle">
+            <%= recipeTitle %>
+          </h1>
+
+          <p class="previewServings">
+            <img src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-513199747384/images/create/serve.png" alt="">
+            <%= servings %> Servings
+          </p>
+
+          <div id="previewIngredients" class="col1 previewer">
+            <h2 class="piTitle col1">Ingredients</h2>
+
+            <div class="piLeft col1124">
+              <p class="piTitleIng"><%= setIng1 %></p>
+              <ul class="piList">
+              
+                <% if (typeof(recipeIng1) == 'object') { %>
+                 <% for(var i=0; i<recipeIng1.length; i++) { %>
+                  <li><%= recipeIng1[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeIng1) == 'string') { %>
+                  <li><%= recipeIng1 %></li>
+                <% } %>
+               
+              </ul>
+              
+              <% if(setIng2) { %>
+
+              <p class="piTitleIng"><%= setIng2 %></p>
+              <ul class="piList">
+               
+                <% if (typeof(recipeIng2) == 'object') { %>
+                 <% for(var i=0; i<recipeIng2.length; i++) { %>
+                  <li><%= recipeIng2[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeIng2) == 'string') { %>
+                  <li><%= recipeIng2 %></li>
+                <% } %>
+                
+              </ul>
+              <% } %>
+            </div>
+
+            <div class="piRight col1224">
+              <% if(setIng3) { %>
+
+              <p class="piTitleIng"><%= setIng3 %></p>
+              <ul class="piList">
+               
+                <% if (typeof(recipeIng3) == 'object') { %>
+                 <% for(var i=0; i<recipeIng3.length; i++) { %>
+                  <li><%= recipeIng3[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeIng3) == 'string') { %>
+                  <li><%= recipeIng3 %></li>
+                <% } %>
+                
+              </ul>
+              <% } %>
+              
+              <% if(setIng4) { %>
+
+              <p class="piTitleIng"><%= setIng4 %></p>
+              <ul class="piList">
+               
+                <% if (typeof(recipeIng4) == 'object') { %>
+                 <% for(var i=0; i<recipeIng4.length; i++) { %>
+                  <li><%= recipeIng4[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeIng4) == 'string') { %>
+                  <li><%= recipeIng4 %></li>
+                <% } %>
+                
+              </ul>
+              <% } %>
+              
+              <% if(setIng5) { %>
+
+              <p class="piTitleIng"><%= setIng5 %></p>
+              <ul class="piList">
+               
+                <% if (typeof(recipeIng5) == 'object') { %>
+                 <% for(var i=0; i<recipeIng5.length; i++) { %>
+                  <li><%= recipeIng5[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeIng5) == 'string') { %>
+                  <li><%= recipeIng5 %></li>
+                <% } %>
+                
+              </ul>
+              <% } %>
+            </div>
+          </div>
+          
+          <div id="previewInstructions" class="col1 previewer">
+            <h2 class="piTitle col1">Instructions</h2>
+
+            <div class="piLeft col1124">
+              <p class="piTitleIng"><%= meth1 %></p>
+              <ul class="piList">
+              
+                <% if (typeof(recipeMeth1) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth1.length; i++) { %>
+                  <li><%= recipeMeth1[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeMeth1) == 'string') { %>
+                  <li><%= recipeMeth1 %></li>
+                <% } %>
+                
+              </ul>
+              
+              <% if(meth2) { %>
+
+              <p class="piTitleIng"><%= meth2 %></p>
+              <ul class="piList">
+               
+                <% if (typeof(recipeMeth2) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth2.length; i++) { %>
+                  <li><%= recipeMeth2[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeMeth2) == 'string') { %>
+                  <li><%= recipeMeth2 %></li>
+                <% } %>
+                
+              </ul>
+              <% } %>
+            </div>
+
+            <div class="piRight col1224">
+              <% if(meth3) { %>
+
+              <p class="piTitleIng"><%= meth3 %></p>
+              <ul class="piList">
+               
+                <% if (typeof(recipeMeth3) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth3.length; i++) { %>
+                  <li><%= recipeMeth3[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeMeth3) == 'string') { %>
+                  <li><%= recipeMeth3 %></li>
+                <% } %>
+                
+              </ul>
+              <% } %>
+              
+              <% if(meth4) { %>
+
+              <p class="piTitleIng"><%= meth4 %></p>
+              <ul class="piList">
+               
+                <% if (typeof(recipeMeth4) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth4.length; i++) { %>
+                  <li><%= recipeMeth4[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeMeth4) == 'string') { %>
+                  <li><%= recipeMeth4 %></li>
+                <% } %>
+                
+              </ul>
+              <% } %>
+              
+              <% if(meth5) { %>
+
+              <p class="piTitleIng"><%= meth5 %></p>
+              <ul class="piList">
+               
+                <% if (typeof(recipeMeth5) == 'object')  { %>
+                 <% for(var i=0; i<recipeMeth5.length; i++) { %>
+                  <li><%= recipeMeth5[i] %></li>
+                 <% } %>
+                <% } else if (typeof(recipeMeth5) == 'string') { %>
+                  <li><%= recipeMeth5 %></li>
+                <% } %>
+                
+              </ul>
+              <% } %>
+            </div>
+          </div>
+          
+          <div id="previewAbout" class="col1 previewer">
+            <h2 class="piTitle col1">About the recipe</h2>
+
+            <div class="piLeft col2224">
+              <p class="piTitleIng"><%= recipeStory %></p>
+            </div>
+          </div>
+
+          <div class="previewButtons col1">
+            <a href="#" class="pButton active" id="btnIng">Ingredients</a>
+            <a href="#" class="pButton" id="btnInst">Instructions</a>
+            <a href="#" class="pButton" id="btnAbout">About the recipe</a>
+          </div>
+
+        </div>
+      </div>
+
+      <hr class="styled">
+
+      <div class="previewReviewButtons col1">
+        <a id="mainSender" href="#" class="btn prbSubmit">Submit recipe</a>
+        <a id="editSender" href="#" class="btn prbEdit">Edit before send</a>
+      </div>
+
+
+      <footer class="row mainFooter">
+        <div class="col824 colm624 coll324">
+          <a href="index.html"><img src="https://s3-us-west-2.amazonaws.com/elasticbeanstalk-us-west-2-513199747384/images/logo-taste.png" alt="Taste logo" class="imgResponsive"></a>
+        </div>
+      </footer>
+    </div>
+    <!-- /container -->
+
+    <!--script src="dist/vendor/dropzone.js"></script-->
+    <script src="dist/js/main.min.js"></script>
+  </body>
+</html>

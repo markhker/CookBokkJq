@@ -974,7 +974,162 @@ input.cropit-image-zoom-input {
 }
 
 .adminMainDash {
-  justify-content: space-between;
+  justify-content: space-around;
+}
+
+.adminItem {
+  position: relative;
+  height: 24rem;
+  
+  .adminItemBack {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(0.6) blur(1px) contrast(1.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .adminBanner {
+    width: 100%;
+    position: relative;
+    height: 2rem;
+  }
+  
+  .yes {
+    background-color: $green;
+  }
+  
+  .no {
+    background-color: $magenta;
+  }
+  
+  .adminBannerTitle {
+    color: $w;
+    line-height: 0;
+    padding-left: 1rem;
+  }
+  
+  .adminBannerImg {
+    width: 3.5rem;
+    height: auto;
+    display: block;
+    position: absolute;
+    top: -.5rem;
+    right: -1.5rem;
+  }
+  
+  .adminItemContent {
+    position: relative;
+  }
+  
+  .adminItemTitle {
+    font-size: 2.8rem;
+    line-height: 3rem;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+    font-family: $jennasue;
+    color: $w;
+    text-shadow: 4px 4px 11px rgba($w, .6);
+  }
+  
+  .adminItemName {
+    color: $w;
+    font-weight: 500;
+    margin: 0;
+    padding: 0 0 0 1rem;
+  }
+  
+  .adminItemLocation {
+    color: #ddd;
+    margin: 0;
+    font-size: .8rem;
+    padding-left: 1rem;
+  }
+  
+  .adminItemPosition {
+    color: $w;
+    margin: .5rem 0 1rem 0;
+    padding-left: 1rem;
+  }
+  
+  .adminItemUserImage {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    border: 5px solid $w;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    right: -1.5rem;
+    bottom: 0;
+  }
+}
+
+.adminReviewButtons {
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.adminReview {
+  display: block;
+  box-sizing: border-box;
+  margin: 2rem 0;
+  padding: 10px 2rem;
+  outline: 0;
+  border: 1px solid $yellow;
+  border-radius: 5px;
+  background: $yellow;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.3333333;
+  cursor: pointer;
+  margin-right: 2rem;
+
+  &:hover {
+    background: rgba($blue-3, 0.8);
+    border: 1px solid $blue-3;
+  }
+
+  &:focus {
+    border-color: #0074c2;
+    box-shadow: 0 0 8px rgba(134,200,45, 0.6);
+  }
+}
+
+.adminPublish {
+  display: block;
+  box-sizing: border-box;
+  margin: 2rem 0;
+  padding: 10px 2rem;
+  outline: 0;
+  border: 1px solid $green;
+  border-radius: 5px;
+  background: $green;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1rem;
+  line-height: 1.3333333;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba($blue-3, 0.8);
+    border: 1px solid $blue-3;
+  }
+
+  &:focus {
+    border-color: #0074c2;
+    box-shadow: 0 0 8px rgba(134,200,45, 0.6);
+  }
 }
 
 /*************************************************************
@@ -1019,3 +1174,132 @@ input.cropit-image-zoom-input {
 /*********************************************************
     Media Queries
 *********************************************************/
+
+
+/****************************************************
+LOADER
+*****************************************************/
+
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999
+}
+
+#loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #52bcec;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    z-index: 10001
+}
+
+#loader:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #c8175e;
+    -webkit-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite
+}
+
+#loader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #86c82d;
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+#loader-wrapper .loader-section {
+    position: fixed;
+    top: 0;
+    width: 51%;
+    height: 100%;
+    background: #fff;
+    z-index: 1000;
+    -webkit-transform: translateX(0);
+    transform: translateX(0)
+}
+
+#loader-wrapper .loader-section.section-left {
+    left: 0
+}
+
+#loader-wrapper .loader-section.section-right {
+    right: 0
+}
+
+.loaded #loader-wrapper .loader-section.section-left {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)
+}
+
+.loaded #loader-wrapper .loader-section.section-right {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)
+}
+
+.loaded #loader {
+    opacity: 0;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out
+}
+
+.loaded #loader-wrapper {
+    visibility: hidden;
+    -webkit-transform: translateY(-100%);
+    transform: translateY(-100%);
+    -webkit-transition: all 0.3s 1s ease-out;
+    transition: all 0.3s 1s ease-out
+}

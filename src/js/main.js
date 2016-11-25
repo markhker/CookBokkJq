@@ -2,6 +2,7 @@
 $(function() {
 
   $('.disabled').prop('disabled', true);
+  $('.adminDeactivated').prop('disabled', true);
   $('#previewInstructions').hide();
   $('#previewAbout').hide();
   $('#btnIng').prop('disabled', true);
@@ -243,5 +244,25 @@ $(function() {
     e.preventDefault();
     window.location = '/edit';
   });
-
+  
+  /* ADMIN REVIEWER */
+  $('.adminReview').click(function(e) {
+    var key = this.dataset.key;
+    e.preventDefault();
+    $.ajax({
+      url: '/adminedit',
+      type: 'post',
+      data: {'key': key},
+      success: function() {
+        console.log('success');
+        window.location = '/adminreview';
+      },
+      error: function(xhr, status, error) {
+        console.log(xhr.responseText);
+      }
+    });
+    return false;
+  });
+  
+  /* ENDS ADMIN REVIEWER */
 });

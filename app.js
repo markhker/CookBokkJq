@@ -9,7 +9,7 @@ var formidable = require('formidable');
 var fs = require('fs');
 var app = express();
 
-var data, sess, userImg, dishImg, lister;
+var data, sess, userImg, dishImg, lister, adminData, counter, retrieve;
 var objectData = [];
 var keys = [];
 
@@ -27,8 +27,8 @@ app.use(session({
 }));
 
 app.use(express.static(path.join(__dirname, 'uploads')));
-app.use(bodyParser.json({limit: '2048mb'}));
-app.use(bodyParser.urlencoded({limit: '2048mb', extended: true}));
+app.use(bodyParser.json({limit: '10240mb'}));
+app.use(bodyParser.urlencoded({limit: '10240mb', extended: true}));
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -86,6 +86,8 @@ app.get('/', function(req, res){
 });
 
 /* ADMIN DASHBOARD*/
+var loaded = false;
+counter = 0;
 app.get('/admin', function(req, res){
   var params = {
     Delimiter: '',
@@ -96,36 +98,125 @@ app.get('/admin', function(req, res){
     if (err) {
       console.log(err, err.stack);
     } else {
-      for (var i = 0; i < data.KeyCount; i++) {
+      lister = data.KeyCount;
+      for (var i = 0; i < lister; i++) {
           keys[i] = data.Contents[i].Key;
       };
-      console.log(keys);
-      
+      //console.log(keys);
       for (var j = 0; j < keys.length; j++) {
         (function(j){
           s3Bucket.getObject({Key: keys[j]}).
           on('error', function(response) {
-            console.log(err, err.stack);
+            console.log(response);
           }).
           on('complete', function(response) {
-            var retrieve = JSON.parse(response.data.Body.toString('utf-8'));
-              var jsoning = JSON.stringify(retrieve);
-              objectData.push(retrieve);
-              
+            retrieve = JSON.parse(response.data.Body.toString('utf-8'));
+            //var jsoning = JSON.stringify(retrieve);
+            objectData.push(retrieve);
+              //console.log(objectData);
+            counter++;
+            if(counter === keys.length){loaded=true};
           }).send();
         })(j);
       };
     };
   });
   
+  var myVar = setInterval(function(){
+    renderit();
+  }, 300);
+  
+  function renderit() {
+    if(loaded){
+      res.render('admindashboard', {
+        data: objectData,
+        keys: lister,
+        loaded: loaded
+      });
+      clearInterval(myVar);
+    };
+  };
+  /*
+    setTimeout(function(){ 
+      //console.log(objectData[1]);
+      res.render('admindashboard', {
+        data: objectData,
+        keys: lister,
+        loaded: loaded
+      });
+
+    }, 8000);
+    */
+});
+
+var loaded2 = false;
+app.post('/adminedit' ,function(req, res){
+  data = req.body;
+  sess = req.session;
+  console.log(data);
+  s3Bucket.getObject({Key: data.key}).
+  on('error', function(response) {
+    console.log(response);
+  }).
+  on('complete', function(response) {
+    adminData = JSON.parse(response.data.Body.toString('utf-8'));
+    loaded2=true;
+  }).send();
+  
+  var interv2 = setInterval(function(){
+    renderit2();
+  }, 100);
+  
+  function renderit2() {
+    if(loaded2){
+      sess.userData = adminData;
+      console.log(adminData);
+      res.redirect('/adminreview');
+      clearInterval(interv2);
+    };
+  };
+  /*
   setTimeout(function(){ 
-    console.log(objectData[0]);
-    res.render('admindashboard', {
-      data: objectData
-    });
+    sess.userData = adminData;
+    console.log(adminData);
+    res.redirect('/adminreview');
   
   }, 5000);
-  
+  */
+});
+
+app.get('/adminreview', function(req, res){
+  sess = req.session;
+  res.render('adminreview', {
+      userName: sess.userData.firstName + ' '+ sess.userData.lastName,
+      userLocation: sess.userData.city,
+      userPosition: sess.userData.position,
+      dishImage: sess.userData.dishImage,
+      userImage: sess.userData.userImage,
+      recipeTitle: sess.userData.recipe.recipeTitle,
+      servings: sess.userData.recipe.recipeServings,
+      setIng1: sess.userData.recipe.setIngredient_1,
+      recipeIng1: sess.userData.recipe.recipeIngredient_1,
+      setIng2: sess.userData.recipe.setIngredient_2,
+      recipeIng2: sess.userData.recipe.recipeIngredient_2,
+      setIng3: sess.userData.recipe.setIngredient_3,
+      recipeIng3: sess.userData.recipe.recipeIngredient_3,
+      setIng4: sess.userData.recipe.setIngredient_4,
+      recipeIng4: sess.userData.recipe.recipeIngredient_4,
+      setIng5: sess.userData.recipe.setIngredient_5,
+      recipeIng5: sess.userData.recipe.recipeIngredient_5,
+      meth1: sess.userData.recipe.recipeMethod_1,
+      recipeMeth1: sess.userData.recipe.recipeStep_1,
+      meth2: sess.userData.recipe.recipeMethod_2,
+      recipeMeth2: sess.userData.recipe.recipeStep_2,
+      meth3: sess.userData.recipe.recipeMethod_3,
+      recipeMeth3: sess.userData.recipe.recipeStep_3,
+      meth4: sess.userData.recipe.recipeMethod_4,
+      recipeMeth4: sess.userData.recipe.recipeStep_4,
+      meth5: sess.userData.recipe.recipeMethod_5,
+      recipeMeth5: sess.userData.recipe.recipeStep_5,
+      recipeStory: sess.userData.recipe.recipeStory,
+    });
 });
 /* END ADMIN DASHBOARD*/
 
@@ -162,7 +253,7 @@ app.post('/uploadRecipe',function(req, res){
   sess.userData.userImage = userImg;
   sess.userData.dishImage = dishImg;
   
-  console.log(sess.userData);
+  //console.log(sess.userData);
   res.redirect('/preview')
 });
 
